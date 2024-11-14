@@ -1,0 +1,736 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Polygenic Risk Score Tools Notebooks Workflow &#8212; PRSTools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'NotebooksWorkflow';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plink" href="Plink.html" />
+    <link rel="prev" title="Step2-GWASAndIndividualGenotypeDataQualityControls" href="Step2-GWASAndIndividualGenotypeDataQualityControls.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="PRSTools - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="PRSTools - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Introduction.html">
+                    Introduction - PRSTools
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Step1-DownloadSampleDataandSetupEnvironment.html">Step1-DownloadSampleDataandSetupEnvironment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Step2-GWASAndIndividualGenotypeDataQualityControls.html">Step2-GWASAndIndividualGenotypeDataQualityControls</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Polygenic Risk Score Tools Notebooks Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plink.html">Plink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSice-2.html">PRSice-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBSLMM.html">DBSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTA.html">GCTA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lassosum.html">Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Inf.html">LDpred-2-Inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Grid.html">LDpred-2-Grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Auto.html">LDpred-2-Auto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Lassosum.html">LDpred-2-Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-funct-code.html">LDpred-funct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesR.html">GCTB: Calculating PRS with SBayesR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesRC.html">GCTB-SBayesRC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GenotypeData.html">LDAK-GenotypeData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GWAS.html">LDAK-GWAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScs.html">PRScs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScsx.html">PRScsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tlpSum.html">tlpSum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSbils.html">PRSbils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTPR.html">CTPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NPS.html">NPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDPR.html">SDPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JAMPred.html">JAMPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EBPRS.html">EB-PRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PANPRS.html">PANPRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BOLT-LMM.html">BOLT-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RapidoPGS-single.html">RapidoPGS-single</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-gibbs.html">LDpred-gibbs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-fast.html">LDpred-fast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-p%2Bt.html">LDpred-p+t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-inf.html">LDpred-inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnnoPredCode.html">AnnoPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PleioPredCode.html">PleioPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtOLS.html">smtpredwMtOLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtSBLUP.html">smtpredwMtSBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C%2BT.html">C+T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-simple.html">VIPRS-simple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-grid.html">VIPRS-grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HAIL.html">HAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LM.html">GEMMA-LM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LMM.html">GEMMA-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-BSLMM.html">GEMMA-BSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MTG2.html">MTG2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCT.html">SCT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XPBLUP.html">XPBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTSLEB.html">CTSLEB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PolyPred.html">PolyPred</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools/issues/new?title=Issue%20on%20page%20%2FNotebooksWorkflow.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/NotebooksWorkflow.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Polygenic Risk Score Tools Notebooks Workflow</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygenic-risk-scores-tool-overview">1. Polygenic Risk Scores Tool Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-process">Installation Process</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gwas-modification">2. GWAS Modification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gwas-processing">GWAS Processing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-plink-hyperparameters">3. Define Plink Hyperparameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-prs-hyperparameters">Define PRS Hyperparameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions-for-cleaning-data">4. Helper Functions for Cleaning Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-clumping-pruning-functions-and-functions-to-fit-the-prs">Define Clumping/Pruning Functions and Functions to Fit the PRS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-tool">5. Execute Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-code-for-a-specific-tool">Execute the Code for a Specific Tool</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-process-for-each-fold">6. Repeat the Process for Each Fold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-fold-number-in-the-3rd-step">Change the Fold Number in the 3rd Step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-results">7. Evaluate the Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-best-performing-parameters">Find the Best-Performing Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8. Conclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-logs-generated-by-the-notebook">Review Logs Generated by the Notebook</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="NotebookWorkflowFinal" src="_images/NotebookWorkflowFinal.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="polygenic-risk-score-tools-notebooks-workflow">
+<h1>Polygenic Risk Score Tools Notebooks Workflow<a class="headerlink" href="#polygenic-risk-score-tools-notebooks-workflow" title="Link to this heading">#</a></h1>
+<p><strong>Notebooks for each tool are organized in the following format:</strong></p>
+<section id="polygenic-risk-scores-tool-overview">
+<h2>1. Polygenic Risk Scores Tool Overview<a class="headerlink" href="#polygenic-risk-scores-tool-overview" title="Link to this heading">#</a></h2>
+<section id="installation-process">
+<h3>Installation Process<a class="headerlink" href="#installation-process" title="Link to this heading">#</a></h3>
+<p><strong>Documentation/GitHub/Tool Link</strong></p>
+<ul class="simple">
+<li><p>Discussed the process of installing the tool.</p></li>
+<li><p>Whether the tool requires Python 2 or 3.</p></li>
+<li><p>Checked if the tool relies on any other tools or datasets for calculation.</p></li>
+<li><p>Specified the hyperparameters offered by the tool.</p></li>
+<li><p>Highlighted the hyperparameters we considered.</p></li>
+</ul>
+</section>
+</section>
+<section id="gwas-modification">
+<h2>2. GWAS Modification<a class="headerlink" href="#gwas-modification" title="Link to this heading">#</a></h2>
+<section id="gwas-processing">
+<h3>GWAS Processing<a class="headerlink" href="#gwas-processing" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Modified the GWAS file as required by the specific tool.</p></li>
+<li><p>PRS tools expect the GWAS file to:</p>
+<ul>
+<li><p>Be in a specific format.</p></li>
+<li><p>Have specific headers.</p></li>
+<li><p>GWAS should be in a specific format before it is passed to Notebook/Code.</p></li>
+</ul>
+</li>
+<li><p>Continuous phenotypes: Ensure the <code class="docutils literal notranslate"><span class="pre">BETA</span></code> (effect size) column is in the GWAS.</p></li>
+<li><p>Binary phenotypes: Ensure the <code class="docutils literal notranslate"><span class="pre">OR</span></code> (odd ratio) column is in the GWAS.</p></li>
+</ul>
+</section>
+</section>
+<section id="define-plink-hyperparameters">
+<h2>3. Define Plink Hyperparameters<a class="headerlink" href="#define-plink-hyperparameters" title="Link to this heading">#</a></h2>
+<section id="define-prs-hyperparameters">
+<h3>Define PRS Hyperparameters<a class="headerlink" href="#define-prs-hyperparameters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Specified clumping and pruning parameters for the genotype data.</p></li>
+<li><p>Defined the number of principal components (PCA).</p></li>
+<li><p>Defined the number of p-value thresholds (More p-values, better results. PRS is calculated for each p-value threshold.  Combined PRS with covariates and PCA for the final prediction).</p></li>
+<li><p>Specified the fold number for which the code should be executed.</p></li>
+</ul>
+</section>
+</section>
+<section id="helper-functions-for-cleaning-data">
+<h2>4. Helper Functions for Cleaning Data<a class="headerlink" href="#helper-functions-for-cleaning-data" title="Link to this heading">#</a></h2>
+<section id="define-clumping-pruning-functions-and-functions-to-fit-the-prs">
+<h3>Define Clumping/Pruning Functions and Functions to Fit the PRS<a class="headerlink" href="#define-clumping-pruning-functions-and-functions-to-fit-the-prs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Defined a function to calculate PCA from the genotype data.</p></li>
+<li><p>Defined a function to perform clumping and pruning.</p></li>
+<li><p>Defined a function to fit the binary phenotype using logistic regression (<code class="docutils literal notranslate"><span class="pre">LOGIT</span></code>).</p>
+<ul>
+<li><p>Merges covariates, PCA, and PRS.</p></li>
+<li><p>One can use different regularization terms when fitting the model.</p></li>
+<li><p>One can use different evaluation metrics.</p></li>
+</ul>
+</li>
+<li><p>Defined a function to fit the continuous phenotype using ordinary least squares (<code class="docutils literal notranslate"><span class="pre">OLS</span></code>).</p>
+<ul>
+<li><p>Merges covariates, PCA, and PRS.</p></li>
+<li><p>One can use different regularization terms when fitting the model.</p></li>
+<li><p>One can use different evaluation metrics.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="execute-tool">
+<h2>5. Execute Tool<a class="headerlink" href="#execute-tool" title="Link to this heading">#</a></h2>
+<section id="execute-the-code-for-a-specific-tool">
+<h3>Execute the Code for a Specific Tool<a class="headerlink" href="#execute-the-code-for-a-specific-tool" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Deleted files from previous iterations.</p></li>
+<li><p>Executed the code for the specific tool, phenotype, and fold.</p></li>
+<li><p>Modified the GWAS and genotype files if required by the tool.</p></li>
+<li><p>For some tools, genotype data must be split across each phenotype.</p></li>
+<li><p>Calculated additional parameters, such as heritability for <code class="docutils literal notranslate"><span class="pre">GCTA</span></code>, if needed.</p></li>
+<li><p>Calculated the PRS using <code class="docutils literal notranslate"><span class="pre">PLINK</span></code> with posterior effect sizes estimated by the tool.</p></li>
+<li><p>Saved the results.</p></li>
+</ul>
+</section>
+</section>
+<section id="repeat-the-process-for-each-fold">
+<h2>6. Repeat the Process for Each Fold<a class="headerlink" href="#repeat-the-process-for-each-fold" title="Link to this heading">#</a></h2>
+<section id="change-the-fold-number-in-the-3rd-step">
+<h3>Change the Fold Number in the 3rd Step<a class="headerlink" href="#change-the-fold-number-in-the-3rd-step" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Verified that the result file was generated.</p></li>
+<li><p>Checked the number of rows in the result file.</p></li>
+<li><p>Changed the fold number and executed the code for each fold.</p></li>
+<li><p>Ensured that files were generated for each fold.</p></li>
+<li><p>Summed the results across all folds, making sure the sum corresponds to the correct rows.</p></li>
+<li><p>If the code failed for some datasets (e.g., negative heritability), discarded those rows for that fold.</p></li>
+</ul>
+</section>
+</section>
+<section id="evaluate-the-results">
+<h2>7. Evaluate the Results<a class="headerlink" href="#evaluate-the-results" title="Link to this heading">#</a></h2>
+<section id="find-the-best-performing-parameters">
+<h3>Find the Best-Performing Parameters<a class="headerlink" href="#find-the-best-performing-parameters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Identified the best performance parameters across all folds.</p></li>
+<li><p>Used two methods to report performance:</p>
+<ul>
+<li><p>The test performance corresponding to the highest training performance across all rows.</p></li>
+<li><p>Generalized performance where the difference between train and test performance is minimal, but their sum is high.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>8. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<section id="review-logs-generated-by-the-notebook">
+<h3>Review Logs Generated by the Notebook<a class="headerlink" href="#review-logs-generated-by-the-notebook" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Performed various analyses, such as:</p>
+<ul>
+<li><p>Assessing the impact of different hyperparameters on performance.</p></li>
+<li><p>Plotting the correlation between hyperparameters and train and test performance.</p></li>
+<li><p>Reporting the p-values that yield the best performance.</p></li>
+</ul>
+</li>
+<li><p>Reviewed the logs generated by the notebook to ensure proper execution.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Step2-GWASAndIndividualGenotypeDataQualityControls.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Step2-GWASAndIndividualGenotypeDataQualityControls</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Plink.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plink</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygenic-risk-scores-tool-overview">1. Polygenic Risk Scores Tool Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-process">Installation Process</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gwas-modification">2. GWAS Modification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gwas-processing">GWAS Processing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-plink-hyperparameters">3. Define Plink Hyperparameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-prs-hyperparameters">Define PRS Hyperparameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions-for-cleaning-data">4. Helper Functions for Cleaning Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-clumping-pruning-functions-and-functions-to-fit-the-prs">Define Clumping/Pruning Functions and Functions to Fit the PRS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-tool">5. Execute Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-code-for-a-specific-tool">Execute the Code for a Specific Tool</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-process-for-each-fold">6. Repeat the Process for Each Fold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-fold-number-in-the-3rd-step">Change the Fold Number in the 3rd Step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-results">7. Evaluate the Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-best-performing-parameters">Find the Best-Performing Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8. Conclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-logs-generated-by-the-notebook">Review Logs Generated by the Notebook</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Muneeb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

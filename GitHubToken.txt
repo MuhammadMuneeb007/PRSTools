@@ -1,0 +1,53 @@
+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
+
+
+git remote set-url origin https://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@github.com/muhammadmuneeb007/wd
+git push -u origin main
+
+gh repo create testing --public
+
+git init
+git add .
+git commit -m "Initial commit"
+ 
+git remote add origin https://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@github.com/muhammadmuneeb007/testing
+
+
+git remote set-url origin https://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@github.com/muhammadmuneeb007/testing
+git push --force origin main
+
+
+git remote add fork https://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@github.com/muhammadmuneeb007/testing.git
+git push fork new-branch
+
+
+
+C:\Users\kl\Desktop\The University of Queensland\PRSTools\Github>git push --force origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/muhammadmuneeb007/testing'
+git branch
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+git branch -m master main
+git push -u origin main
+
+
+git pull origin main
+git add docs
+
+
+
+
+
+
+
+
+
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch docs/_sources/PRSbils.rst.txt docs/PRSbils.html' --prune-empty --tag-name-filter cat -- --all
+
+# Clean up the old references
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+

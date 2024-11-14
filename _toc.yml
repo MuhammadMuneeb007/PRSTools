@@ -1,0 +1,57 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: Introduction  # Starting page of the book
+
+chapters:
+  - file: Step1-DownloadSampleDataandSetupEnvironment
+  - file: Step2-GWASAndIndividualGenotypeDataQualityControls
+  - file: NotebooksWorkflow
+  - file: Plink
+  - file: PRSice-2
+  - file: DBSLMM
+  - file: GCTA
+  - file: Lassosum
+  - file: LDpred-2-Inf
+  - file: LDpred-2-Grid
+  - file: LDpred-2-Auto
+  - file: LDpred-2-Lassosum
+  - file: LDpred-funct-code
+  - file: GCTB-SBayesR
+  - file: GCTB-SBayesRC
+  - file: LDAK-GenotypeData
+  - file: LDAK-GWAS
+  - file: PRScs
+  - file: PRScsx
+  - file: tlpSum
+  - file: PRSbils
+  - file: CTPR
+  - file: NPS
+  - file: SDPR
+  - file: JAMPred
+  - file: EBPRS
+  - file: PANPRS
+  - file: BOLT-LMM
+  - file: RapidoPGS-single
+  - file: LDpred-gibbs
+  - file: LDpred-fast
+  - file: LDpred-p+t
+  - file: LDpred-inf
+  - file: AnnoPredCode
+  - file: PleioPredCode
+  - file: smtpredwMtOLS
+  - file: smtpredwMtSBLUP
+  - file: C+T
+  - file: viprs-simple
+  - file: viprs-grid
+  - file: HAIL
+  - file: GEMMA-LM
+  - file: GEMMA-LMM
+  - file: GEMMA-BSLMM
+  - file: MTG2
+  - file: SCT
+  - file: XPBLUP
+  - file: CTSLEB
+  - file: PolyPred
+

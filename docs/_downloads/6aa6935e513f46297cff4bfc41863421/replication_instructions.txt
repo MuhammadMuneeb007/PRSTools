@@ -1,0 +1,6 @@
+To replicate the advanceR environment:
+1. Clone the repository associated with advanceR.
+2. Navigate to the directory and create the environment using:
+   conda env create -f environment.yml
+3. Activate the environment using:
+   conda activate advanceR

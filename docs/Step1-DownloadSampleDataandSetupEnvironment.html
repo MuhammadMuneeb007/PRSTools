@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Step1-DownloadSampleDataandSetupEnvironment &#8212; PRSTools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Step1-DownloadSampleDataandSetupEnvironment';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Step2-GWASAndIndividualGenotypeDataQualityControls" href="Step2-GWASAndIndividualGenotypeDataQualityControls.html" />
+    <link rel="prev" title="Introduction - PRSTools" href="Introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="PRSTools - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="PRSTools - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Introduction.html">
+                    Introduction - PRSTools
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Step1-DownloadSampleDataandSetupEnvironment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Step2-GWASAndIndividualGenotypeDataQualityControls.html">Step2-GWASAndIndividualGenotypeDataQualityControls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NotebooksWorkflow.html">Polygenic Risk Score Tools Notebooks Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plink.html">Plink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSice-2.html">PRSice-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBSLMM.html">DBSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTA.html">GCTA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lassosum.html">Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Inf.html">LDpred-2-Inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Grid.html">LDpred-2-Grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Auto.html">LDpred-2-Auto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Lassosum.html">LDpred-2-Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-funct-code.html">LDpred-funct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesR.html">GCTB: Calculating PRS with SBayesR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesRC.html">GCTB-SBayesRC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GenotypeData.html">LDAK-GenotypeData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GWAS.html">LDAK-GWAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScs.html">PRScs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScsx.html">PRScsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tlpSum.html">tlpSum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSbils.html">PRSbils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTPR.html">CTPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NPS.html">NPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDPR.html">SDPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JAMPred.html">JAMPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EBPRS.html">EB-PRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PANPRS.html">PANPRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BOLT-LMM.html">BOLT-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RapidoPGS-single.html">RapidoPGS-single</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-gibbs.html">LDpred-gibbs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-fast.html">LDpred-fast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-p%2Bt.html">LDpred-p+t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-inf.html">LDpred-inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnnoPredCode.html">AnnoPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PleioPredCode.html">PleioPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtOLS.html">smtpredwMtOLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtSBLUP.html">smtpredwMtSBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C%2BT.html">C+T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-simple.html">VIPRS-simple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-grid.html">VIPRS-grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HAIL.html">HAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LM.html">GEMMA-LM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LMM.html">GEMMA-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-BSLMM.html">GEMMA-BSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MTG2.html">MTG2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCT.html">SCT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XPBLUP.html">XPBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTSLEB.html">CTSLEB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PolyPred.html">PolyPred</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools/issues/new?title=Issue%20on%20page%20%2FStep1-DownloadSampleDataandSetupEnvironment.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Step1-DownloadSampleDataandSetupEnvironment.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Step1-DownloadSampleDataandSetupEnvironment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-anaconda">Download Anaconda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dedicated-environment-for-your-project">Create a Dedicated Environment for Your Project:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-r-within-the-environment">Install R within the Environment:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sample-data">Download Sample Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-target-data">Extracting Target Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-bed-files">View Bed Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-quantitative-trait-height">Analyzing Quantitative Trait (Height)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygenic-risk-score-prs-tools-overview">Polygenic Risk Score (PRS) Tools Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting-and-hyperparameter-optimization">Data Splitting and Hyperparameter Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-credit-to-shing-wan-choi">Full Credit to Shing Wan Choi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data">View Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-note">Important Note</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="step1-downloadsampledataandsetupenvironment">
+<h1>Step1-DownloadSampleDataandSetupEnvironment<a class="headerlink" href="#step1-downloadsampledataandsetupenvironment" title="Link to this heading">#</a></h1>
+<section id="download-anaconda">
+<h2>Download Anaconda<a class="headerlink" href="#download-anaconda" title="Link to this heading">#</a></h2>
+<p>To run the PRS Notebooks, set up a conda environment. Some tools require a dedicated (separate) conda environment, and for such tools, instructions are provided in their corresponding Notebooks.</p>
+<section id="windows">
+<h3>Windows:<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Visit the <a class="reference external" href="https://www.anaconda.com/download">Anaconda website</a>.</p></li>
+<li><p>Choose the appropriate installer (64-bit is recommended for most systems).</p></li>
+<li><p>Run the installer and follow the on-screen instructions.</p></li>
+</ol>
+</section>
+<section id="linux">
+<h3>Linux:<a class="headerlink" href="#linux" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Open a terminal window and run these commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://repo.anaconda.com/archive/Anaconda3-2024.01-Linux-x86_64.sh
+chmod<span class="w"> </span>+x<span class="w"> </span>Anaconda3-2024.01-Linux-x86_64.sh
+bash<span class="w"> </span>Anaconda3-2024.01-Linux-x86_64.sh
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="create-a-dedicated-environment-for-your-project">
+<h3>Create a Dedicated Environment for Your Project:<a class="headerlink" href="#create-a-dedicated-environment-for-your-project" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Open a terminal window (or Anaconda Prompt on Windows).</p></li>
+<li><p>Create a new environment named “prstools” with Python 3.10:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>prstools<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</pre></div>
+</div>
+</li>
+<li><p>Activate the environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>prstools
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="install-r-within-the-environment">
+<h3>Install R within the Environment:<a class="headerlink" href="#install-r-within-the-environment" title="Link to this heading">#</a></h3>
+<p>Install R version 4.3.2 from the conda-forge channel:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>r-base<span class="o">=</span><span class="m">4</span>.3.2
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>r-essentials
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<p>In this section, we will download the sample data.</p>
+<section id="download-sample-data">
+<h3>Download Sample Data<a class="headerlink" href="#download-sample-data" title="Link to this heading">#</a></h3>
+<p>The first step is to download the sample data. You can find the base data <a class="reference external" href="https://drive.google.com/file/d/1RWjk49QNZj9zvJHc9X_wyZ51fdy6xQjv/view">here</a> and the target data <a class="reference external" href="https://drive.google.com/file/d/1uhJR_3sn7RA8U5iYQbcmTp6vFdQiF4F2/view">here</a>.</p>
+</section>
+<section id="extracting-target-data">
+<h3>Extracting Target Data<a class="headerlink" href="#extracting-target-data" title="Link to this heading">#</a></h3>
+<p>Extract the target data and organize it with the following files in a directory named <code class="docutils literal notranslate"><span class="pre">SampleData1</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleData1.bed</span></code>: Plink Files (bed, bim, fam) containing genotype information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleData1.bim</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleData1.fam</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleData1.cov</span></code>: Contains covariate information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleData1.height</span></code>: Contains the actual height phenotype.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleData1.gz</span></code>: GWAS summary statistic file.</p></li>
+</ul>
+<p><strong>Ensure to rename all files to the <code class="docutils literal notranslate"><span class="pre">SampleData1</span></code> prefix.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── SampleData1
+│   ├── SampleData1.bed
+│   ├── SampleData1.bim
+│   ├── SampleData1.cov
+│   ├── SampleData1.fam
+│   ├── SampleData1.gz
+│   └── SampleData1.height
+</pre></div>
+</div>
+</section>
+<section id="view-bed-files">
+<h3>View Bed Files<a class="headerlink" href="#view-bed-files" title="Link to this heading">#</a></h3>
+<p>To view Bed files, visit <a class="reference external" href="https://zzz.bwh.harvard.edu/plink/binary.shtml">Plink Binary Files Documentation</a>.</p>
+</section>
+<section id="analyzing-quantitative-trait-height">
+<h3>Analyzing Quantitative Trait (Height)<a class="headerlink" href="#analyzing-quantitative-trait-height" title="Link to this heading">#</a></h3>
+<p>We will begin by analyzing the quantitative trait (height). The dataset used for the continuous trait analysis is sourced from the tutorial by <a class="reference external" href="https://choishingwan.github.io/PRS-Tutorial/base/">choishingwan</a>, and we express our gratitude for making it publicly available.</p>
+</section>
+<section id="polygenic-risk-score-prs-tools-overview">
+<h3>Polygenic Risk Score (PRS) Tools Overview<a class="headerlink" href="#polygenic-risk-score-prs-tools-overview" title="Link to this heading">#</a></h3>
+<p>PRS tools can be categorized into three types:</p>
+<ol class="arabic simple">
+<li><p><strong>Type 1: Summary Statistics File Only</strong></p>
+<ul class="simple">
+<li><p>These tools use a summary statistic file (e.g., gwas.txt) and estimate betas or posterior probabilities. They may require population-specific linkage disequilibrium calculations.</p></li>
+</ul>
+</li>
+<li><p><strong>Type 2: Summary Statistic File and Individual Data Set</strong></p>
+<ul class="simple">
+<li><p>This category of PRS tools requires both a summary statistic file and an individual dataset. They optimize various hyperparameters for beta estimation or snp weight estimation.</p></li>
+</ul>
+</li>
+<li><p><strong>Type 3: Individual Data Set Only</strong></p>
+<ul class="simple">
+<li><p>These tools focus on polygenic risk score calculation for individuals without relying on a summary statistic file. They incorporate linkage equilibrium for betas or snp weight estimation.</p></li>
+</ul>
+</li>
+<li><p><strong>Type 4: Multi-ancestry/Disease Tools</strong></p>
+<ul class="simple">
+<li><p>These tools use GWAS from multiple populations or multiple diseases to calculate posterior probabilities or new Betas.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="data-splitting-and-hyperparameter-optimization">
+<h3>Data Splitting and Hyperparameter Optimization<a class="headerlink" href="#data-splitting-and-hyperparameter-optimization" title="Link to this heading">#</a></h3>
+<p>The target data is split into a 75% training or hyperparameter optimization set and a 25% testing set for final performance evaluation.</p>
+<p>For binary phenotypes, we used a stratified cross-validation technique to split the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For continuous phenotypes, we used cross-validation to split the data into 5 folds.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hyperparameter optimization can be categorized into two types:</p>
+<ol class="arabic simple">
+<li><p><strong>Genotype data Quality controls related Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>This includes considerations such as pruning and clumping during quality controls on the target data.</p></li>
+</ul>
+</li>
+<li><p><strong>Tools-Specific Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>When using the GWAS File and an individual dataset, specific hyperparameters, such as lambdas for lasso, may be considered.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="full-credit-to-shing-wan-choi">
+<h3>Full Credit to Shing Wan Choi<a class="headerlink" href="#full-credit-to-shing-wan-choi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>GitHub: <a class="reference external" href="https://github.com/choishingwan">Shing Wan Choi</a></p></li>
+</ul>
+<p>Tutorial Link from where the code has been inferred: <a class="reference external" href="https://choishingwan.github.io/PRS-Tutorial/base/">Shing Wan Choi’s PRS Tutorial</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following code is for Linux</span>
+<span class="o">!</span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>defaults
+<span class="o">!</span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>bioconda
+<span class="o">!</span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>bioconda::bedtools
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>bioconda::samtools
+<span class="c1"># You can execute the code from terminal after activitating the conda environment.</span>
+<span class="c1"># conda activate genetics.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="view-data">
+<h2>View Data<a class="headerlink" href="#view-data" title="Link to this heading">#</a></h2>
+<p>In this section, we will view the sample data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="c1"># Set the directory where the files are located</span>
+<span class="n">filedirec</span> <span class="o">=</span> <span class="s2">&quot;SampleData1&quot;</span>
+
+<span class="c1"># Define file paths for different data files</span>
+<span class="n">BED</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span>
+<span class="n">BIM</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.bim&quot;</span>
+<span class="n">FAM</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.fam&quot;</span>
+<span class="n">COV</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.cov&quot;</span>
+<span class="n">Height</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.height&quot;</span>
+<span class="n">GWAS</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.gz&quot;</span>
+
+<span class="c1"># Read the first 10 rows of the BED file (matrix, cannot be viewed directly)</span>
+<span class="c1"># This is a placeholder comment since viewing a BED file is not applicable in this context</span>
+<span class="c1">#https://en.wikipedia.org/wiki/BED_(file_format)</span>
+
+<span class="c1"># Read the first 10 rows of the BIM file (PLINK map file)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">BIM</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of BIM file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 rows of BIM file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Read the first 10 rows of the FAM file (PLINK pedigree file)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FAM</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of FAM file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 rows of FAM file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Read the first 10 rows of the COV file (covariate information file)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">COV</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of COV file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 rows of COV file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Read the first 10 rows of the Height file (file containing actual height phenotypes)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Height</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of Height file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 rows of Height file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Read the first 10 rows of the GWAS file (GWAS summary statistic file)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">GWAS</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of GWAS file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 rows of GWAS file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columns of BIM file:
+Index([0, 1, 2, 3, 4, 5], dtype=&#39;int64&#39;)
+First 10 rows of BIM file:
+   0           1         2       3  4  5
+0  1   rs3131962  0.490722  756604  A  G
+1  1  rs12562034  0.495714  768448  0  0
+2  1   rs4040617  0.500708  779322  G  A
+3  1  rs79373928  0.587220  801536  G  T
+4  1  rs11240779  0.620827  808631  G  A
+Columns of FAM file:
+Index([0, 1, 2, 3, 4, 5], dtype=&#39;int64&#39;)
+First 10 rows of FAM file:
+         0        1  2  3  4  5
+0  HG00096  HG00096  0  0  1 -9
+1  HG00097  HG00097  0  0  2 -9
+2  HG00099  HG00099  0  0  2 -9
+3  HG00100  HG00100  0  0  2 -9
+4  HG00101  HG00101  0  0  1 -9
+Columns of COV file:
+Index([&#39;FID&#39;, &#39;IID&#39;, &#39;Sex&#39;], dtype=&#39;object&#39;)
+First 10 rows of COV file:
+       FID      IID  Sex
+0  HG00096  HG00096    1
+1  HG00097  HG00097    2
+2  HG00099  HG00099    2
+3  HG00100  HG00100    2
+4  HG00101  HG00101    1
+Columns of Height file:
+Index([&#39;FID&#39;, &#39;IID&#39;, &#39;Height&#39;], dtype=&#39;object&#39;)
+First 10 rows of Height file:
+       FID      IID      Height
+0  HG00096  HG00096  169.132169
+1  HG00097  HG00097  171.256259
+2  HG00099  HG00099  171.534380
+3  HG00101  HG00101  169.850176
+4  HG00102  HG00102  172.788361
+Columns of GWAS file:
+Index([&#39;CHR&#39;, &#39;BP&#39;, &#39;SNP&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;N&#39;, &#39;SE&#39;, &#39;P&#39;, &#39;OR&#39;, &#39;INFO&#39;, &#39;MAF&#39;], dtype=&#39;object&#39;)
+First 10 rows of GWAS file:
+   CHR      BP         SNP A1 A2       N        SE         P        OR  \
+0    1  756604   rs3131962  A  G  388028  0.003017  0.483171  0.997887   
+1    1  768448  rs12562034  A  G  388028  0.003295  0.834808  1.000687   
+2    1  779322   rs4040617  G  A  388028  0.003033  0.428970  0.997604   
+3    1  801536  rs79373928  G  T  388028  0.008413  0.808999  1.002036   
+4    1  808631  rs11240779  G  A  388028  0.002428  0.590265  1.001308   
+
+       INFO       MAF  
+0  0.890558  0.369390  
+1  0.895894  0.336846  
+2  0.897508  0.377368  
+3  0.908963  0.483212  
+4  0.893213  0.450410  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="important-note">
+<h2>Important Note<a class="headerlink" href="#important-note" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>This notebook needs to be executed only once to download the sample data.</p></li>
+<li><p>If someone wants to use the data in a different format, ensure you follow the same directory structure.</p></li>
+<li><p>Please ensure that your data has the same number of columns and the same headers. Cheers!</p></li>
+<li><p>For continuous phenotype GWAS, the <code class="docutils literal notranslate"><span class="pre">SampleData1/SampleData1.gz</span></code> file should have BETAs, and for binary phenotypes, it should have OR instead of BETAs. If BETAs are not available, we convert OR to BETAs using <code class="docutils literal notranslate"><span class="pre">BETA</span> <span class="pre">=</span> <span class="pre">np.log(OR)</span></code> and convert BETAs to OR using <code class="docutils literal notranslate"><span class="pre">OR</span> <span class="pre">=</span> <span class="pre">np.exp(BETA)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>; <code class="docutils literal notranslate"><span class="pre">np</span></code> is the NumPy module.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction - PRSTools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Step2-GWASAndIndividualGenotypeDataQualityControls.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Step2-GWASAndIndividualGenotypeDataQualityControls</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-anaconda">Download Anaconda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-dedicated-environment-for-your-project">Create a Dedicated Environment for Your Project:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-r-within-the-environment">Install R within the Environment:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sample-data">Download Sample Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-target-data">Extracting Target Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-bed-files">View Bed Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-quantitative-trait-height">Analyzing Quantitative Trait (Height)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygenic-risk-score-prs-tools-overview">Polygenic Risk Score (PRS) Tools Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting-and-hyperparameter-optimization">Data Splitting and Hyperparameter Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-credit-to-shing-wan-choi">Full Credit to Shing Wan Choi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data">View Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-note">Important Note</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Muneeb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

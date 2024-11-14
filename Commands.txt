@@ -1,0 +1,59 @@
+git init
+
+
+git add .
+git commit -m "Added new files or made changes"
+git push -u origin main
+
+git push origin main --force
+
+   Introduction
+   Step1-DownloadSampleDataandSetupEnvironment
+   Step2-GWASAndIndividualGenotypeDataQualityControls
+   NotebooksWorkflow
+   Plink
+   PRSice-2
+   DBSLMM
+   GCTA
+   Lassosum
+   LDpred-2-Inf
+   LDpred-2-Grid
+   LDpred-2-Auto
+   LDpred-2-Lassosum
+   LDpred-funct-code
+   GCTB-SBayesR
+   GCTB-SBayesRC
+   LDAK-GenotypeData
+   LDAK-GWAS
+   PRScs
+   PRScsx
+   tlpSum
+   PRSbils
+   CTPR
+   NPS
+   SDPR
+   JAMPred
+   EBPRS
+   PANPRS
+   BOLT-LMM
+   RapidoPGS-single
+   LDpred-gibbs
+   LDpred-fast
+   LDpred-p+t
+   LDpred-inf
+   AnnoPredCode
+   PleioPredCode
+   smtpredwMtOLS
+   smtpredwMtSBLUP
+   C+T
+   viprs-simple
+   viprs-grid
+   HAIL
+   GEMMA-LM
+   GEMMA-LMM
+   GEMMA-BSLMM
+   MTG2
+   SCT
+   XPBLUP
+   CTSLEB
+   PolyPred

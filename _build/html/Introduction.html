@@ -1,0 +1,1298 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction - PRSTools &#8212; PRSTools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Introduction';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Step1-DownloadSampleDataandSetupEnvironment" href="Step1-DownloadSampleDataandSetupEnvironment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="PRSTools - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="PRSTools - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Introduction - PRSTools
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Step1-DownloadSampleDataandSetupEnvironment.html">Step1-DownloadSampleDataandSetupEnvironment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Step2-GWASAndIndividualGenotypeDataQualityControls.html">Step2-GWASAndIndividualGenotypeDataQualityControls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NotebooksWorkflow.html">Polygenic Risk Score Tools Notebooks Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plink.html">Plink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSice-2.html">PRSice-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBSLMM.html">DBSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTA.html">GCTA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lassosum.html">Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Inf.html">LDpred-2-Inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Grid.html">LDpred-2-Grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Auto.html">LDpred-2-Auto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Lassosum.html">LDpred-2-Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-funct-code.html">LDpred-funct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesR.html">GCTB: Calculating PRS with SBayesR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesRC.html">GCTB-SBayesRC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GenotypeData.html">LDAK-GenotypeData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GWAS.html">LDAK-GWAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScs.html">PRScs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScsx.html">PRScsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tlpSum.html">tlpSum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSbils.html">PRSbils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTPR.html">CTPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NPS.html">NPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDPR.html">SDPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JAMPred.html">JAMPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EBPRS.html">EB-PRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PANPRS.html">PANPRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BOLT-LMM.html">BOLT-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RapidoPGS-single.html">RapidoPGS-single</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-gibbs.html">LDpred-gibbs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-fast.html">LDpred-fast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-p%2Bt.html">LDpred-p+t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-inf.html">LDpred-inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnnoPredCode.html">AnnoPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PleioPredCode.html">PleioPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtOLS.html">smtpredwMtOLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtSBLUP.html">smtpredwMtSBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C%2BT.html">C+T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-simple.html">VIPRS-simple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-grid.html">VIPRS-grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HAIL.html">HAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LM.html">GEMMA-LM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LMM.html">GEMMA-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-BSLMM.html">GEMMA-BSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MTG2.html">MTG2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCT.html">SCT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XPBLUP.html">XPBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTSLEB.html">CTSLEB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PolyPred.html">PolyPred</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools/issues/new?title=Issue%20on%20page%20%2FIntroduction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Introduction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction - PRSTools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-challenges">Key Challenges</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-overview">Repository Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prs-tools-included-in-the-analysis">PRS Tools Included in the Analysis.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-environment">Conda Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-projects">Related Projects.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-information">Author Information.</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-prstools">
+<h1>Introduction - PRSTools<a class="headerlink" href="#introduction-prstools" title="Link to this heading">#</a></h1>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<p>While working on a manuscript focused on benchmarking machine learning algorithms for genotype-phenotype prediction, I received feedback recommending the inclusion of a broader analysis of PRS methodologies. This led me to investigate various PRS calculation tools used in genetic research, each of which applies unique approaches and assumptions that influence final PRS. These findings were supported by studies like <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/34243982/">this one on PubMed</a>, which reviews the diversity in PRS tools.</p>
+<p>The calculation of PRS depends on several factors:</p>
+<ul class="simple">
+<li><p><strong>Data Type Compatibility</strong>: Some tools rely on GWAS summary statistics, others use genotype data, and some utilize both types.</p></li>
+<li><p><strong>Modeling Differences</strong>: Tools apply different mathematical models, impacting PRS interpretation.</p></li>
+<li><p><strong>Reference Panels and Genome Builds</strong>: PRS tools may require specific reference panels, which affect compatibility and generalizability.</p></li>
+</ul>
+<section id="key-challenges">
+<h3>Key Challenges<a class="headerlink" href="#key-challenges" title="Link to this heading">#</a></h3>
+<p>Implementing PRS tools for practical analysis posed several challenges:</p>
+<ul class="simple">
+<li><p><strong>Data Format Incompatibility</strong>: Different tools accept varying input formats, making data integration across tools challenging.</p></li>
+<li><p><strong>Limited Cross-Validation Support</strong>: Many tools lack built-in cross-validation functionality, essential for robust model validation.</p></li>
+<li><p><strong>HPC Scalability Constraints</strong>: Some tools are not optimized for high-performance computing (HPC), limiting scalability for analyses across multiple phenotypes.</p></li>
+</ul>
+</section>
+</section>
+<section id="repository-overview">
+<h2>Repository Overview<a class="headerlink" href="#repository-overview" title="Link to this heading">#</a></h2>
+<p>To address these challenges, we created a new repository that provides a unified implementation of PRS calculation tools with enhancements for usability in real-world research settings. Key features include:</p>
+<ol class="arabic simple">
+<li><p><strong>Benchmarking</strong>: We benchmarked 46 PRS tools/methods on both binary and continuous phenotypes.</p></li>
+<li><p><strong>Comparative Analysis</strong>: Performance, computation time, memory consumption, and beta distribution of each tool were compared.</p></li>
+<li><p><strong>Data Transformation</strong>: Documentation on the necessary input data transformations ensures compatibility across PRS tools.</p></li>
+<li><p><strong>Parallel Execution</strong>: Tools were implemented for parallel execution on HPC systems, enabling simultaneous analyses across multiple phenotypes.</p></li>
+<li><p><strong>Detailed Documentation</strong>: Comprehensive end-to-end documentation for each PRS tool is available on GitHub.</p></li>
+<li><p><strong>Diverse Dataset Testing</strong>: PRS tools were benchmarked on diverse datasets, revealing specific tools’ limitations for certain data types.</p></li>
+<li><p><strong>Unified PRS Calculation Pipeline</strong>: A standardized evaluation process was applied across all tools.</p></li>
+<li><p><strong>Cross-Validation Implementation</strong>: Five-fold cross-validation was incorporated to assess tool performance, an often-missing feature.</p></li>
+<li><p><strong>Hyperparameter Tuning</strong>: PRS-specific hyperparameters (e.g., p-value thresholds, PCA counts) and tool-specific hyperparameters were included to optimize PRS accuracy.</p></li>
+</ol>
+<p><img alt="Introduction" src="_images/Introduction.png" /></p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In summary, this repository addresses some limitations in current PRS tools, providing researchers with an adaptable and efficient solution for polygenic risk score calculations. By improving compatibility, scalability, and documentation, the repository supports large-scale genetic studies and promotes broader use of PRS methodologies in research.</p>
+<p><img alt="Discussion.png" src="_images/Discussion.png" /></p>
+</section>
+<section id="prs-tools-included-in-the-analysis">
+<h2>PRS Tools Included in the Analysis.<a class="headerlink" href="#prs-tools-included-in-the-analysis" title="Link to this heading">#</a></h2>
+<p>Following is the list of PRS tools included in the analysis.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Python</p></th>
+<th class="head"><p>Conda Environment</p></th>
+<th class="head"><p>Tool Link</p></th>
+<th class="head"><p>Phenotype (Binary/Continuous/Both)</p></th>
+<th class="head"><p>Requires Genotype data</p></th>
+<th class="head"><p>Requires GWAS data</p></th>
+<th class="head"><p>Requires Covariate data</p></th>
+<th class="head"><p>Requires Reference data</p></th>
+<th class="head"><p>Dependence</p></th>
+<th class="head"><p>Language</p></th>
+<th class="head"><p>Original article DOI</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Plink</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://www.cog-genomics.org/plink/1.9/score">Plink 1.9</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>C</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1086/519795">10.1086/519795</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PRSice-2</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/choishingwan/PRSice">PRSice-2</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Optional</p></td>
+<td><p>Optional, but recommended</p></td>
+<td><p>No</p></td>
+<td><p>C++ and R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/gigascience/giz082">10.1093/gigascience/giz082</a></p></td>
+</tr>
+<tr class="row-even"><td><p>GCTA</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://yanglab.westlake.edu.cn/software/gcta/#SBLUP">GCTA SBLUP</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1007/978-1-62703-447-0_9">10.1007/978-1-62703-447-0_9</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DBSLMM</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/biostat0903/DBSLMM">DBSLMM</a></p></td>
+<td><p>Both</p></td>
+<td><p>No (optional, can be used as reference panel)</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Optional, but recommended</p></td>
+<td><p>Plink (PRS calc), LDpred-2 (Heritability calc)</p></td>
+<td><p>C++ and R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2020.03.013">10.1016/j.ajhg.2020.03.013</a></p></td>
+</tr>
+<tr class="row-even"><td><p>lassosum</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://rdrr.io/github/tshmak/lassosum/man/lassosum.html">lassosum</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1002/gepi.22050">10.1002/gepi.22050</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ldpred2_inf</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://privefl.github.io/bigsnpr/articles/LDpred2.html">LDpred2 inf</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/bioinformatics/btaa1029">10.1093/bioinformatics/btaa1029</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ldpred2_grid</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://privefl.github.io/bigsnpr/articles/LDpred2.html">LDpred2 grid</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/bioinformatics/btaa1029">10.1093/bioinformatics/btaa1029</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ldpred2_auto</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://privefl.github.io/bigsnpr/articles/LDpred2.html">LDpred2 auto</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/bioinformatics/btaa1029">10.1093/bioinformatics/btaa1029</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ldpred2_lassosum2</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://privefl.github.io/bigsnpr/articles/LDpred2.html">LDpred2 lassosum2</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/bioinformatics/btaa1029">10.1093/bioinformatics/btaa1029</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ldpred-funct</p></td>
+<td><p>2</p></td>
+<td><p>ldscc</p></td>
+<td><p><a class="reference external" href="https://github.com/carlaml/LDpred-funct">LDpred-funct</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calc), LDpred-2 (Heritability calc)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-021-25171-9">10.1038/s41467-021-25171-9</a></p></td>
+</tr>
+<tr class="row-even"><td><p>SBayesR</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://cnsgenomics.com/software/gctb/#Download">SBayesR</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes - To create an LD matrix</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes - LD Matrix</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41588-024-01704-y">10.1038/s41588-024-01704-y</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SBayesRC</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://cnsgenomics.com/software/gctb/#Download">SBayesRC</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes - To create an LD matrix</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes - LD Matrix</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-019-12653-0">10.1038/s41467-019-12653-0</a></p></td>
+</tr>
+<tr class="row-even"><td><p>LDAK-genotype</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://dougspeed.com/quick-prs/">LDAK-genotype</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-021-24485-y">10.1038/s41467-021-24485-y</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>LDAK-gwas</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://dougspeed.com/quick-prs/">LDAK-gwas</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes - Correlation Matrix</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-021-24485-y">10.1038/s41467-021-24485-y</a></p></td>
+</tr>
+<tr class="row-even"><td><p>PRScs</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/getian107/PRScs">PRScs</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes - LD Matrix</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-019-09718-5">10.1038/s41467-019-09718-5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PRScsx</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/getian107/PRScsx">PRScsx</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes - LD Matrix</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41588-022-01054-7">10.1038/s41588-022-01054-7</a></p></td>
+</tr>
+<tr class="row-even"><td><p>tlpSum</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/jpattee/penRegSum">tlpSum</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1371/journal.pcbi.1008271">10.1371/journal.pcbi.1008271</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PRSbils</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/styvon/PRSbils">PRSbils</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CTPR</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/wonilchung/CTPR">CTPR</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-019-08535-0">10.1038/s41467-019-08535-0</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>NPS</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/sgchun/nps">NPS</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2020.05.004">10.1016/j.ajhg.2020.05.004</a></p></td>
+</tr>
+<tr class="row-even"><td><p>SDPR</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/eldronzhou/SDPR.git">SDPR</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes - To create an LD matrix</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1371/journal.pgen.1009697">10.1371/journal.pgen.1009697</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>JAMPred</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://rdrr.io/github/pjnewcombe/R2BGLiMS/man/JAMPred.html">JAMPred</a></p></td>
+<td><p>Both</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1002/gepi.22245">10.1002/gepi.22245</a></p></td>
+</tr>
+<tr class="row-even"><td><p>EB-PRS</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/shuangsong0110/EBPRS">EB-PRS</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1371/journal.pcbi.1007565">10.1371/journal.pcbi.1007565</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PANPRS</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/cran/PANPRSnext">PANPRS</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes - As LD matrix</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes - LD Matrix</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1080/01621459.2020.1764849">10.1080/01621459.2020.1764849</a></p></td>
+</tr>
+<tr class="row-even"><td><p>BOLT-LMM</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html#x1-470008">BOLT-LMM</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/ng.3190">10.1038/ng.3190</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>RapidoPGS-single</p></td>
+<td><p>3</p></td>
+<td><p>AdvanceR</p></td>
+<td><p><a class="reference external" href="https://github.com/GRealesM/RapidoPGS">RapidoPGS-single</a></p></td>
+<td><p>Both</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/bioinformatics/btab456">10.1093/bioinformatics/btab456</a></p></td>
+</tr>
+<tr class="row-even"><td><p>LDpred-gibbs</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/bvilhjal/ldpred">LDpred-gibbs</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2015.09.001">10.1016/j.ajhg.2015.09.001</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>LDpred-p+t</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/bvilhjal/ldpred">LDpred-p+t</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2015.09.001">10.1016/j.ajhg.2015.09.001</a></p></td>
+</tr>
+<tr class="row-even"><td><p>LDpred-inf</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/bvilhjal/ldpred">LDpred-inf</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2015.09.001">10.1016/j.ajhg.2015.09.001</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>LDpred-fast</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/bvilhjal/ldpred">LDpred-fast</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2015.09.001">10.1016/j.ajhg.2015.09.001</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Anno-Pred</p></td>
+<td><p>2</p></td>
+<td><p>ldscc</p></td>
+<td><p><a class="reference external" href="https://github.com/yiminghu/AnnoPred">Anno-Pred</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1371/journal.pcbi.1005589">10.1371/journal.pcbi.1005589</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>smtpred-wMtOLS</p></td>
+<td><p>2</p></td>
+<td><p>ldscc</p></td>
+<td><p><a class="reference external" href="https://github.com/uqrmaie1/smtpred">smtpred-wMtOLS</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-017-02769-6">10.1038/s41467-017-02769-6</a></p></td>
+</tr>
+<tr class="row-even"><td><p>smtpred-wMtSBLUP</p></td>
+<td><p>2</p></td>
+<td><p>ldscc</p></td>
+<td><p><a class="reference external" href="https://github.com/uqrmaie1/smtpred">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41467-017-02769-6">https://doi.org/10.1038/s41467-017-02769-6</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>C+T (Clumping and Thresholding)</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>viprs-simple</p></td>
+<td><p>3</p></td>
+<td><p>viprs_env</p></td>
+<td><p><a class="reference external" href="https://github.com/shz9/viprs-paper">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2023.03.009">https://doi.org/10.1016/j.ajhg.2023.03.009</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>viprs-grid</p></td>
+<td><p>3</p></td>
+<td><p>viprs_env</p></td>
+<td><p><a class="reference external" href="https://github.com/shz9/viprs-paper">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2023.03.009">https://doi.org/10.1016/j.ajhg.2023.03.009</a></p></td>
+</tr>
+<tr class="row-even"><td><p>HAIL</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://nbviewer.org/github/ddbj/imputation-server-wf/blob/main/Notebooks/hail-prs-tutorial.ipynb">Notebook</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41588-023-01648-9">https://doi.org/10.1038/s41588-023-01648-9</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GEMMA-LM</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/genetics-statistics/GEMMA">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/ng.2310">https://doi.org/10.1038/ng.2310</a></p></td>
+</tr>
+<tr class="row-even"><td><p>GEMMA-LLM</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/genetics-statistics/GEMMA">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/ng.2310">https://doi.org/10.1038/ng.2310</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>GEMMA_BSLMM</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/genetics-statistics/GEMMA">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/ng.2310">https://doi.org/10.1038/ng.2310</a></p></td>
+</tr>
+<tr class="row-even"><td><p>MTG2</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://sites.google.com/view/s-hong-lee-homepage/mtg2">Homepage</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>C++</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1093/bioinformatics/btw012">10.1093/bioinformatics/btw012</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SCT</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://privefl.github.io/bigsnpr/articles/SCT.html">bigSNP</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1016/j.ajhg.2019.11.001">https://doi.org/10.1016/j.ajhg.2019.11.001</a></p></td>
+</tr>
+<tr class="row-even"><td><p>XP-BLUP</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/tanglab/XP-BLUP">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Bash</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.5808/gi.21053">10.5808/gi.21053</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CTSLEB</p></td>
+<td><p>3</p></td>
+<td><p>genetics</p></td>
+<td><p><a class="reference external" href="https://github.com/andrewhaoyu/CTSLEB">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>R</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41588-023-01501-z">https://doi.org/10.1038/s41588-023-01501-z</a></p></td>
+</tr>
+<tr class="row-even"><td><p>PolyPred</p></td>
+<td><p>3</p></td>
+<td><p>polyfun</p></td>
+<td><p><a class="reference external" href="https://github.com/omerwe/polyfun/wiki/6.-Trans-ethnic-polygenic-risk-prediction-with-PolyPred">Polyfun Wiki</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1038/s41588-022-01036-9">10.1038/s41588-022-01036-9</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Pleio-Pred</p></td>
+<td><p>2</p></td>
+<td><p>ldscc</p></td>
+<td><p><a class="reference external" href="https://github.com/yiminghu/PleioPred">GitHub</a></p></td>
+<td><p>Both</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Plink (PRS calculation)</p></td>
+<td><p>Python</p></td>
+<td><p><a class="reference external" href="https://doi.org/10.1371/journal.pgen.1006836">10.1371/journal.pgen.1006836</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="conda-environment">
+<h2>Conda Environment<a class="headerlink" href="#conda-environment" title="Link to this heading">#</a></h2>
+<p>You may need to create the following Conda Environment to execute each file.</p>
+<ul class="simple">
+<li><p><strong>advanceR Environment</strong><br />
+<a class="reference download internal" download="" href="_downloads/1e158816c9f91348b5de09b5dae32303/environment.yml"><span class="xref download myst">Download environment.yml</span></a><br />
+<a class="reference download internal" download="" href="_downloads/6aa6935e513f46297cff4bfc41863421/replication_instructions.txt"><span class="xref download myst">Download replication_instructions.txt</span></a></p></li>
+<li><p><strong>genetics Environment</strong><br />
+<a class="reference download internal" download="" href="_downloads/b7f0c03b194770b71bda247e075fc92d/environment.yml"><span class="xref download myst">Download environment.yml</span></a><br />
+<a class="reference download internal" download="" href="_downloads/23cb0bbe39004f6e7926130841837289/replication_instructions.txt"><span class="xref download myst">Download replication_instructions.txt</span></a></p></li>
+<li><p><strong>ldscc Environment</strong><br />
+<a class="reference download internal" download="" href="_downloads/9b5008c259dd6ed4bd8cb0d7aa81dec5/environment.yml"><span class="xref download myst">Download environment.yml</span></a><br />
+<a class="reference download internal" download="" href="_downloads/b3f97d7631d9615c068662b66c64978d/replication_instructions.txt"><span class="xref download myst">Download replication_instructions.txt</span></a></p></li>
+<li><p><strong>polyfun Environment</strong><br />
+<a class="reference download internal" download="" href="_downloads/10ac7cad958c414602abfd48bd18adab/environment.yml"><span class="xref download myst">Download environment.yml</span></a><br />
+<a class="reference download internal" download="" href="_downloads/1274edb42858abb11d5ec5ff2bb15b29/replication_instructions.txt"><span class="xref download myst">Download replication_instructions.txt</span></a></p></li>
+<li><p><strong>viprs_env Environment</strong><br />
+<a class="reference download internal" download="" href="_downloads/b25cba54aff9f10981053b4c070afe72/environment.yml"><span class="xref download myst">Download environment.yml</span></a><br />
+<a class="reference download internal" download="" href="_downloads/026ed4f8f152674fd3ea3b3e7f1096a6/replication_instructions.txt"><span class="xref download myst">Download replication_instructions.txt</span></a></p></li>
+</ul>
+<p>The following tools were discarded from further consideration for the following reasons:</p>
+<ul class="simple">
+<li><p><strong>Multiprs</strong> – This methodology calculates PRS for multiple p-value thresholds and then combines them to form a single prediction. It is a methodolgy rather a tool.</p></li>
+<li><p><strong>BGLR-R</strong> – While this software worked with its provided test data, it failed with our data, returning <code class="docutils literal notranslate"><span class="pre">NaN</span></code> for the explained variances across all phenotypes. This was despite our data matching the required format, with no missing genotype values for SNPs or individuals.</p></li>
+<li><p><strong>PolyRiskScore</strong> – This is a web-based tool that calculates PRS for specific SNPs and uses GWAS files from the GWAS catalog. Due to its limited flexibility and dependency on specific SNPs, it was not suitable for our needs.</p></li>
+<li><p><strong>FairPRS</strong> – Although promising, this tool writes output files to the same directory, making it incompatible with running multiple phenotypes or datasets simultaneously on HPC. The lack of parallel processing capability led us to exclude it from further consideration.</p></li>
+<li><p><strong>RapidoPGS-multi</strong> – This tool did not support continuous phenotypes, though it worked for binary ones. Due to this limitation, it was removed from further consideration.</p></li>
+</ul>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<p><img alt="TableResults.png" src="_images/TableResults.png" /></p>
+</section>
+<section id="related-projects">
+<h2>Related Projects.<a class="headerlink" href="#related-projects" title="Link to this heading">#</a></h2>
+<p>Here are some of the related projects that would be very helpful to researchers working on genetics, genotype-phenotype prediction, and risk scores.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Project Title</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>GitHub Link</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>GWASPokerforPRS</strong></p></td>
+<td><p>A meta-analysis and parsing tool designed for efficient polygenic risk score calculation using GWAS summary statistic files. This tool scans the GWAS Catalog, downloads metadata, parses GWAS files, and extracts necessary columns for PRS calculation, including DOI and citation details, helping to streamline the PRS calculation process.</p></td>
+<td><p><a class="reference external" href="https://github.com/MuhammadMuneeb007/GWASPokerforPRS">GitHub Link</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Identifying Genes Associated with Phenotypes Using Machine and Deep Learning</strong></p></td>
+<td><p>A project focused on leveraging machine and deep learning to identify genes associated with various phenotypes. This approach aims to uncover genetic associations that could enhance our understanding of phenotype-genotype relationships, using advanced computational techniques.</p></td>
+<td><p><a class="reference external" href="https://github.com/MuhammadMuneeb007/Identifying-genes-associated-with-30-phenotypes-using-machine-deep-learning-">GitHub Link</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Benchmarking 80 OpenSNP Phenotypes Using Deep Learning Algorithms and PRS Tools</strong></p></td>
+<td><p>This project benchmarks 80 phenotypes from OpenSNP using deep learning algorithms and PRS tools. It aims to evaluate performance across various methods, providing insights into the effectiveness of different algorithms for PRS computation and phenotype prediction.</p></td>
+<td><p><a class="reference external" href="https://github.com/MuhammadMuneeb007/Benchmarking-80-OpenSNP-phenotypes-using-deep-learning-algorithms-and-polygenic-risk-scores-tools">GitHub Link</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Heritability Tools</strong></p></td>
+<td><p>A collection of tools for calculating heritability using diverse statistical methods and datasets, including GWAS summary statistics, genotype data, covariates, PCA, and reference panels. This project serves as a resource for researchers to estimate heritability under different modeling assumptions and statistical approaches.</p></td>
+<td><p><a class="reference external" href="https://github.com/MuhammadMuneeb007/heritability">GitHub Link</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="author-information">
+<h2>Author Information.<a class="headerlink" href="#author-information" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Name</strong>: Muhammad Muneeb</p></li>
+<li><p><strong>Affiliation</strong>: The University of Queensland</p></li>
+<li><p><strong>Email</strong>: <a class="reference external" href="mailto:m&#46;muneeb&#37;&#52;&#48;uq&#46;edu&#46;au">m<span>&#46;</span>muneeb<span>&#64;</span>uq<span>&#46;</span>edu<span>&#46;</span>au</a></p></li>
+<li><p><strong>Gmail</strong>: <a class="reference external" href="mailto:muneebsiddique007&#37;&#52;&#48;gmail&#46;com">muneebsiddique007<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
+<li><p><strong>GitHub</strong>: <a class="reference external" href="https://github.com/MuhammadMuneeb007/">GitHub Profile</a></p></li>
+<li><p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/citations?hl=en&amp;amp;user=X0xdltIAAAAJ&amp;amp;view_op=list_works&amp;amp;sortby=pubdate">Google Scholar</a></p></li>
+<li><p><strong>ResearchGate</strong>: <a class="reference external" href="https://www.researchgate.net/profile/Muhammad-Muneeb-5">ResearchGate Profile</a></p></li>
+<li><p><strong>Supervisor</strong>: <a class="reference external" href="https://scmb.uq.edu.au/profile/8654/david-ascher">David Ascher</a></p></li>
+<li><p><strong>Group Webpage</strong>: <a class="reference external" href="https://biosig.lab.uq.edu.au/">BioSig Lab</a></p></li>
+</ul>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="Step1-DownloadSampleDataandSetupEnvironment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Step1-DownloadSampleDataandSetupEnvironment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-challenges">Key Challenges</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-overview">Repository Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prs-tools-included-in-the-analysis">PRS Tools Included in the Analysis.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-environment">Conda Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-projects">Related Projects.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-information">Author Information.</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Muneeb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

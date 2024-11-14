@@ -1,0 +1,2304 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Step2-GWASAndIndividualGenotypeDataQualityControls &#8212; PRSTools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Step2-GWASAndIndividualGenotypeDataQualityControls';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Polygenic Risk Score Tools Notebooks Workflow" href="NotebooksWorkflow.html" />
+    <link rel="prev" title="Step1-DownloadSampleDataandSetupEnvironment" href="Step1-DownloadSampleDataandSetupEnvironment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="PRSTools - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="PRSTools - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Introduction.html">
+                    Introduction - PRSTools
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Step1-DownloadSampleDataandSetupEnvironment.html">Step1-DownloadSampleDataandSetupEnvironment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Step2-GWASAndIndividualGenotypeDataQualityControls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NotebooksWorkflow.html">Polygenic Risk Score Tools Notebooks Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plink.html">Plink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSice-2.html">PRSice-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBSLMM.html">DBSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTA.html">GCTA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lassosum.html">Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Inf.html">LDpred-2-Inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Grid.html">LDpred-2-Grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Auto.html">LDpred-2-Auto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-2-Lassosum.html">LDpred-2-Lassosum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-funct-code.html">LDpred-funct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesR.html">GCTB: Calculating PRS with SBayesR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GCTB-SBayesRC.html">GCTB-SBayesRC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GenotypeData.html">LDAK-GenotypeData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAK-GWAS.html">LDAK-GWAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScs.html">PRScs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRScsx.html">PRScsx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tlpSum.html">tlpSum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRSbils.html">PRSbils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTPR.html">CTPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NPS.html">NPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDPR.html">SDPR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JAMPred.html">JAMPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EBPRS.html">EB-PRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PANPRS.html">PANPRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BOLT-LMM.html">BOLT-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RapidoPGS-single.html">RapidoPGS-single</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-gibbs.html">LDpred-gibbs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-fast.html">LDpred-fast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-p%2Bt.html">LDpred-p+t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDpred-inf.html">LDpred-inf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnnoPredCode.html">AnnoPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PleioPredCode.html">PleioPred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtOLS.html">smtpredwMtOLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smtpredwMtSBLUP.html">smtpredwMtSBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C%2BT.html">C+T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-simple.html">VIPRS-simple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viprs-grid.html">VIPRS-grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HAIL.html">HAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LM.html">GEMMA-LM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-LMM.html">GEMMA-LMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEMMA-BSLMM.html">GEMMA-BSLMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MTG2.html">MTG2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCT.html">SCT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XPBLUP.html">XPBLUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CTSLEB.html">CTSLEB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PolyPred.html">PolyPred</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MuhammadMuneeb007/PRSTools/issues/new?title=Issue%20on%20page%20%2FStep2-GWASAndIndividualGenotypeDataQualityControls.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Step2-GWASAndIndividualGenotypeDataQualityControls.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Step2-GWASAndIndividualGenotypeDataQualityControls</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-gwas-file">Note on GWAS File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#genome-wide-association-study-gwas-base-data-quality-controls">Genome-Wide Association Study (GWAS) (Base Data) - Quality Controls</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-directory-where-the-files-are-located">Set the directory where the files are located</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-variants-between-gwas-and-individual-genotype-data">Match Variants Between GWAS and Individual Genotype Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-for-handling-rsids-in-gwas-and-genotype-data">Steps for Handling RSIDs in GWAS and Genotype Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-genotype-data-target-data-processing">Individual genotype data (Target Data) Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-people-with-missing-phenotype">Remove people with missing Phenotype</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data-into-test-and-train-and-perform-quality-controls-on-training-data">Split Data into Test and Train and Perform Quality Controls on Training Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruning">Pruning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-designs">Cross-validation Designs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-analysis">A Simple Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-final-files">Check final files.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-note">Important Note</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="step2-gwasandindividualgenotypedataqualitycontrols">
+<h1>Step2-GWASAndIndividualGenotypeDataQualityControls<a class="headerlink" href="#step2-gwasandindividualgenotypedataqualitycontrols" title="Link to this heading">#</a></h1>
+<section id="note-on-gwas-file">
+<h2>Note on GWAS File<a class="headerlink" href="#note-on-gwas-file" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>It is important to note that different polygenic risk tools accept Genome-Wide Association summary statistic files in various formats.</p></li>
+<li><p>The information we have encompasses all the columns required by PRS tools (where some fields are missing, we will highlight it).</p></li>
+<li><p>For each individual tool, we will process this GWAS file so that it can be consumed by a specific PRS tool for prediction. The specific number of fields and the names of those fields are highlighted in each tool’s documentation.</p></li>
+</ol>
+<p><strong>Fields in the GWAS File:</strong></p>
+<p>These fields are also explained in <a class="reference external" href="https://choishingwan.github.io/PRS-Tutorial/base/">this link</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CHR</p></th>
+<th class="head"><p>BP</p></th>
+<th class="head"><p>SNP</p></th>
+<th class="head"><p>A1</p></th>
+<th class="head"><p>A2</p></th>
+<th class="head"><p>N</p></th>
+<th class="head"><p>SE</p></th>
+<th class="head"><p>P</p></th>
+<th class="head"><p>OR</p></th>
+<th class="head"><p>INFO</p></th>
+<th class="head"><p>MAF</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>756604</p></td>
+<td><p>rs3131962</p></td>
+<td><p>A</p></td>
+<td><p>G</p></td>
+<td><p>388028</p></td>
+<td><p>0.00301666</p></td>
+<td><p>0.483171</p></td>
+<td><p>0.997886915712657</p></td>
+<td><p>0.890557941364774</p></td>
+<td><p>0.369389592764921</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>768448</p></td>
+<td><p>rs12562034</p></td>
+<td><p>A</p></td>
+<td><p>G</p></td>
+<td><p>388028</p></td>
+<td><p>0.00329472</p></td>
+<td><p>0.834808</p></td>
+<td><p>1.00068731609353</p></td>
+<td><p>0.895893511351165</p></td>
+<td><p>0.336845754096289</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>779322</p></td>
+<td><p>rs4040617</p></td>
+<td><p>G</p></td>
+<td><p>A</p></td>
+<td><p>388028</p></td>
+<td><p>0.00303344</p></td>
+<td><p>0.42897</p></td>
+<td><p>0.997603556067569</p></td>
+<td><p>0.897508290615237</p></td>
+<td><p>0.377368010940814</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="genome-wide-association-study-gwas-base-data-quality-controls">
+<h2>Genome-Wide Association Study (GWAS) (Base Data) - Quality Controls<a class="headerlink" href="#genome-wide-association-study-gwas-base-data-quality-controls" title="Link to this heading">#</a></h2>
+<p>Please note that some tools have built-in quality control procedures for both GWAS and genotype data.</p>
+<section id="set-the-directory-where-the-files-are-located">
+<h3>Set the directory where the files are located<a class="headerlink" href="#set-the-directory-where-the-files-are-located" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filedirec</span> <span class="o">=</span> <span class="s2">&quot;SampleData1&quot;</span>
+</pre></div>
+</div>
+<p>In case you are running the jobs on HPC and want to use parallel computing, you can replace it with <code class="docutils literal notranslate"><span class="pre">sys.argv[1]</span></code>. All the files for a specific phenotype will be produced in that specific directory, which in this case is <code class="docutils literal notranslate"><span class="pre">SampleData1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="c1"># Set the directory where the files are located</span>
+<span class="n">filedirec</span> <span class="o">=</span> <span class="s2">&quot;SampleData1&quot;</span>
+<span class="c1">#filedirec = &quot;asthma_19&quot;</span>
+<span class="c1">#filedirec = &quot;migraine_0&quot;</span>
+
+<span class="c1"># Define file paths for different data files</span>
+<span class="n">BED</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span>
+<span class="n">BIM</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.bim&quot;</span>
+<span class="n">FAM</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.fam&quot;</span>
+<span class="n">COV</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.cov&quot;</span>
+<span class="n">Height</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.height&quot;</span>
+<span class="n">GWAS</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.gz&quot;</span>
+
+<span class="c1"># Read GWAS data from a compressed file using pandas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">GWAS</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the initial number of rows in the dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initial number of SNPs:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+<span class="c1"># Apply quality control steps: Filter SNPs based on Minor Allele Frequency (MAF) and Imputation Information Score (INFO)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MAF&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;INFO&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)]</span>
+
+<span class="c1"># Display the number of rows after applying the filters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of SNPs after quality control:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+ 
+<span class="c1"># Display the number of rows after removing duplicate SNPs</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SNPs in GWAS after removing duplicate SNPs:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+<span class="c1"># Remove ambiguous SNPs with complementary alleles (C/G or A/T) to avoid potential errors</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span> <span class="o">|</span>
+          <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="o">|</span>
+          <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;G&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span> <span class="o">|</span>
+          <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;G&#39;</span><span class="p">))]</span>
+
+<span class="c1"># Display the final number of SNPs after removing ambiguous SNPs</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final number of SNPs after removing ambiguous SNPs:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+<span class="c1"># Save the data.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">GWAS</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">GWAS</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span> <span class="s2">&quot;gzip&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial number of SNPs: 499617
+Number of SNPs after quality control: 499617
+SNPs in GWAS after removing duplicate SNPs: 499617
+Final number of SNPs after removing ambiguous SNPs: 499617
+499617
+|    |   CHR |     BP | SNP        | A1   | A2   |      N |         SE |        P |       OR |     INFO |      MAF |
+|---:|------:|-------:|:-----------|:-----|:-----|-------:|-----------:|---------:|---------:|---------:|---------:|
+|  0 |     1 | 756604 | rs3131962  | A    | G    | 388028 | 0.00301666 | 0.483171 | 0.997887 | 0.890558 | 0.36939  |
+|  1 |     1 | 768448 | rs12562034 | A    | G    | 388028 | 0.00329472 | 0.834808 | 1.00069  | 0.895894 | 0.336846 |
+|  2 |     1 | 779322 | rs4040617  | G    | A    | 388028 | 0.00303344 | 0.42897  | 0.997604 | 0.897508 | 0.377368 |
+|  3 |     1 | 801536 | rs79373928 | G    | T    | 388028 | 0.00841324 | 0.808999 | 1.00204  | 0.908963 | 0.483212 |
+|  4 |     1 | 808631 | rs11240779 | G    | A    | 388028 | 0.00242821 | 0.590265 | 1.00131  | 0.893213 | 0.45041  |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="match-variants-between-gwas-and-individual-genotype-data">
+<h2>Match Variants Between GWAS and Individual Genotype Data<a class="headerlink" href="#match-variants-between-gwas-and-individual-genotype-data" title="Link to this heading">#</a></h2>
+<p>If RSID is present in the GWAS, the following step can be skipped.</p>
+<section id="steps-for-handling-rsids-in-gwas-and-genotype-data">
+<h3>Steps for Handling RSIDs in GWAS and Genotype Data<a class="headerlink" href="#steps-for-handling-rsids-in-gwas-and-genotype-data" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>If RSIDs are not present for SNPs, put <code class="docutils literal notranslate"><span class="pre">X</span></code> in the SNP column in the GWAS file.</p></li>
+<li><p>Read the <code class="docutils literal notranslate"><span class="pre">genotype.bim</span></code> file and extract the RSIDs from the genotype data.</p></li>
+<li><p>If RSIDs are not present in the genotype data, use HapMap3 or another reference panel to obtain the RSIDs.</p></li>
+</ol>
+<p>Some PRS tools use different criteria to create unique variants and match them between GWAS and individual genotype data:</p>
+<ul class="simple">
+<li><p><strong>CHR:BP:A1:A2</strong>: Some PRS tools use this format to define a unique variant.</p></li>
+<li><p><strong>RSID</strong>: Some PRS tools use RSID/SNP to define a unique variant.</p></li>
+<li><p><strong>CHR:BP</strong>: Some PRS tools use this format to define a unique variant.</p></li>
+</ul>
+<p>We have highlighted which criteria are necessary for each tool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bimfile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">BIM</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of BIM file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bimfile</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 rows of BIM file:&quot;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Removing SNPs for which even a single row does not contain the required value:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+
+<span class="c1"># If RSID&#39;s are not present for SNPs, put X in the SNP column in the GWAS file.</span>
+<span class="c1"># Read the genotype.bim file, and extract the RSID from the genotype data.</span>
+<span class="c1"># If RSID are not present in the genotype data, use HapMap3 or other reference panel to get the RSIDs.</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;SNP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RSIDs are missing!&quot;</span><span class="p">)</span>
+    <span class="n">bimfile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">filedirec</span><span class="o">+</span><span class="s2">&quot;.bim&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    
+    <span class="c1"># create a unique variant using CHR:BP:A1:A2.</span>
+    
+    <span class="n">bimfile</span><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bimfile</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">bimfile</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">bimfile</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">bimfile</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CHR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;A2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    
+
+  
+
+    <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">bimfile</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">bimfile</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)]</span>
+    <span class="n">bimfile</span> <span class="o">=</span> <span class="n">bimfile</span><span class="p">[</span><span class="n">bimfile</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">bimfile</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)]</span>
+    <span class="n">bimfile</span> <span class="o">=</span> <span class="n">bimfile</span><span class="p">[</span><span class="n">bimfile</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)]</span>
+ 
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;BP&#39;</span><span class="p">)</span>
+    <span class="n">bimfile</span> <span class="o">=</span> <span class="n">bimfile</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">bimfile</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;SNP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bimfile</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+
+    <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">bimfile</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bimfile</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">bimfile</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+    
+    <span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">]</span>
+    <span class="c1"># Just save the modified GWAS file.</span>
+    <span class="c1"># If bim, file is modified, the genotype data will be considered as corupt by Plink.</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">GWAS</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total SNPs&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;SNP&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">GWAS</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RSID is present!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total SNPs&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    <span class="k">pass</span>
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columns of BIM file:
+Index([0, 1, 2, 3, 4, 5], dtype=&#39;int64&#39;)
+First 10 rows of BIM file:
+Removing SNPs for which even a single row does not contain the required value: 499617
+RSID is present!
+Total SNPs 499617
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="individual-genotype-data-target-data-processing">
+<h2>Individual genotype data (Target Data) Processing<a class="headerlink" href="#individual-genotype-data-target-data-processing" title="Link to this heading">#</a></h2>
+<p>Ensure that the phenotype file, FAM file, and covariate file contain an identical number of samples. Remove any missing samples based on your data. Note that the extent of missingness in phenotypes and covariates may vary.</p>
+<p><strong>Note:</strong> Plink needs to be installed or placed in the same directory as this notebook.</p>
+<p><a class="reference external" href="https://www.cog-genomics.org/plink/">Download Plink</a></p>
+<p>We recommend using Linux. In cases where Windows is required due to package installation issues on Linux, we provide the following guidance:</p>
+<ol class="arabic simple">
+<li><p>For Windows, use <code class="docutils literal notranslate"><span class="pre">plink</span></code>.</p></li>
+<li><p>For Linux, use <code class="docutils literal notranslate"><span class="pre">./plink</span></code>.</p></li>
+</ol>
+<section id="remove-people-with-missing-phenotype">
+<h3>Remove people with missing Phenotype<a class="headerlink" href="#remove-people-with-missing-phenotype" title="Link to this heading">#</a></h3>
+<p>Modify the fam file, make bed file, and modify the covariates files as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># New files to be saved with QC suffix</span>
+<span class="n">newfilename</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="s2">&quot;_QC&quot;</span>
+
+<span class="c1"># Read information from FAM file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FAM</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FID&quot;</span><span class="p">,</span> <span class="s2">&quot;IID&quot;</span><span class="p">,</span> <span class="s2">&quot;Father&quot;</span><span class="p">,</span> <span class="s2">&quot;Mother&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Phenotype&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FAM file contents:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of people in FAM file:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+
+<span class="c1"># Append the Height phenotype values to FAM file</span>
+<span class="c1"># Height file is basically the phenotype file.</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Height</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Phenotype information is available for:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="s2">&quot;people&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FID&#39;</span><span class="p">,</span> <span class="s1">&#39;IID&#39;</span><span class="p">])</span>
+
+<span class="c1"># Replace &#39;Phenotype&#39; column with &#39;Height&#39; and save to a new PeopleWithPhenotype.txt file</span>
+<span class="c1"># Ensure that the input Phenotype file has teh header Height.</span>
+<span class="n">result</span><span class="p">[</span><span class="s2">&quot;Phenotype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="k">del</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span>
+
+<span class="c1"># Remove NA or missing in the phenotype column</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Phenotype&quot;</span><span class="p">])</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="s2">&quot;PeopleWithPhenotype.txt&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use plink to keep only the people with phenotype present</span>
+<span class="n">plink_command</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span><span class="p">,</span>
+    <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="s2">&quot;PeopleWithPhenotype.txt&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">newfilename</span>
+<span class="p">]</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command</span><span class="p">)</span>
+
+<span class="c1"># Update the phenotype information in the new FAM file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">newfilename</span> <span class="o">+</span> <span class="s2">&quot;.fam&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span>
+                <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;FID&quot;</span><span class="p">,</span> <span class="s2">&quot;IID&quot;</span><span class="p">,</span> <span class="s2">&quot;Father&quot;</span><span class="p">,</span> <span class="s2">&quot;Mother&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Phenotype&quot;</span><span class="p">])</span>
+<span class="n">f</span><span class="p">[</span><span class="s2">&quot;Phenotype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Phenotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">f</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">newfilename</span> <span class="o">+</span> <span class="s2">&quot;.fam&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Update the covariate file as well</span>
+<span class="n">covfile</span> <span class="o">=</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">filedirec</span> <span class="o">+</span> <span class="s1">&#39;.cov&#39;</span>
+<span class="n">covfile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">covfile</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Covariate file contents:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">covfile</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of people in Covariate file:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covfile</span><span class="p">))</span>
+
+<span class="c1"># Match the FID and IID from covariate and height file</span>
+<span class="n">covfile</span> <span class="o">=</span> <span class="n">covfile</span><span class="p">[</span><span class="n">covfile</span><span class="p">[</span><span class="s1">&#39;FID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;FID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">covfile</span><span class="p">[</span><span class="s1">&#39;IID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;IID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Covariate file contents after matching with FAM file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">covfile</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of people in Covariate file after matching:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covfile</span><span class="p">))</span>
+<span class="n">covfile</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">newfilename</span> <span class="o">+</span> <span class="s2">&quot;.cov&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FAM file contents:
+       FID      IID  Father  Mother  Sex  Phenotype
+0  HG00096  HG00096       0       0    1         -9
+1  HG00097  HG00097       0       0    2         -9
+2  HG00099  HG00099       0       0    2         -9
+3  HG00100  HG00100       0       0    2         -9
+4  HG00101  HG00101       0       0    1         -9
+Total number of people in FAM file: 503
+Phenotype information is available for: 475 people
+475
+         FID      IID  Father  Mother  Sex   Phenotype
+0    HG00096  HG00096       0       0    1  169.132169
+1    HG00097  HG00097       0       0    2  171.256259
+2    HG00099  HG00099       0       0    2  171.534380
+3    HG00101  HG00101       0       0    1  169.850176
+4    HG00102  HG00102       0       0    2  172.788361
+..       ...      ...     ...     ...  ...         ...
+470  NA20822  NA20822       0       0    2  170.405056
+471  NA20826  NA20826       0       0    2  168.523029
+472  NA20827  NA20827       0       0    1  170.975735
+473  NA20828  NA20828       0       0    2  170.222028
+474  NA20832  NA20832       0       0    2  169.431705
+
+[475 rows x 6 columns]
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/SampleData1_QC.log.
+Options in effect:
+  --bfile SampleData1/SampleData1
+  --keep SampleData1/PeopleWithPhenotype.txt
+  --make-bed
+  --out SampleData1/SampleData1_QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+503 people (240 males, 263 females) loaded from .fam.
+--keep: 475 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 475 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 475 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to SampleData1/SampleData1_QC.bed + SampleData1/SampleData1_QC.bim +
+SampleData1/SampleData1_QC.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+Covariate file contents:
+       FID      IID  Sex
+0  HG00096  HG00096    1
+1  HG00097  HG00097    2
+2  HG00099  HG00099    2
+3  HG00100  HG00100    2
+4  HG00101  HG00101    1
+Total number of people in Covariate file: 503
+Covariate file contents after matching with FAM file:
+       FID      IID  Sex
+0  HG00096  HG00096    1
+1  HG00097  HG00097    2
+2  HG00099  HG00099    2
+4  HG00101  HG00101    1
+5  HG00102  HG00102    2
+Total number of people in Covariate file after matching: 475
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="split-data-into-test-and-train-and-perform-quality-controls-on-training-data">
+<h2>Split Data into Test and Train and Perform Quality Controls on Training Data<a class="headerlink" href="#split-data-into-test-and-train-and-perform-quality-controls-on-training-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>We adopt a cross-validation design to evaluate polygenic risk scores.</p></li>
+<li><p>The base data is divided into two sets: training and test sets. The training set is used to find the best combination of parameters or hyperparameters offered by each tool, along with the summary statistic file. The data is split into 5 folds, and further processing is performed on the first fold. <code class="docutils literal notranslate"><span class="pre">Fold_0</span></code></p></li>
+<li><p>Data is divided into training and test sets, and hyperparameter optimization is performed on the training data. Operations such as clumping or pruning are applied to the training data, and the same remaining SNPs should be extracted from the test set rather than separately using pruning or clumping on test data.</p></li>
+<li><p>Regarding hyperparameters from individual tools, all of those should be applied to the training set, and the performance should be measured for both the null model and the complete model (including covariates and polygenic risk scores). Since it is a continuous phenotype, Explained Variance is considered to assess the performance of the PRS model. For binary phenotypes, we considered AUC to evaluate the PRS performance.</p></li>
+</ol>
+<p><strong>Note:</strong> We will divide the data into training and test sets, perform quality controls on the training data. The data for each fold will be saved separately for further processing.
+.</p>
+<section id="pruning">
+<h3>Pruning<a class="headerlink" href="#pruning" title="Link to this heading">#</a></h3>
+<p>Pruning is an integral part of the analysis, but it has been skipped as a quality control on the training set for the following reasons. In our initial analysis, we observed that pruning and clumping can affect the performance of the polygenic risk score model. Rather than performing it at this stage, we consider it as one of the hyperparameters and it will be performed at a later stage. If we perform pruning at this stage, the process that passed the pruning step would limit us to use other values for pruning at the latest stage. However, even at the latest stage, pruning is only performed on the training set.</p>
+</section>
+<section id="cross-validation-designs">
+<h3>Cross-validation Designs<a class="headerlink" href="#cross-validation-designs" title="Link to this heading">#</a></h3>
+<p>There are multiple ways of doing cross-validation design, and one of them is to use all the cohorts except one for the training and then use the last cohort as the validation set. We performed quality controls and hyperparameter optimization on the training set and found the best combination across all folds, reporting the performance of the best hyperparameter combination on the test set.</p>
+</section>
+<section id="a-simple-analysis">
+<h3>A Simple Analysis<a class="headerlink" href="#a-simple-analysis" title="Link to this heading">#</a></h3>
+<p>If you have a separate GWAS file and our training data that you will be using to optimize the hyperparameter on a subset without cross-validation, then follow the original tutorial presented in the first cell <a class="reference external" href="https://choishingwan.github.io/PRS-Tutorial/base/">Shing Wan Choi’s PRS Tutorial</a>.</p>
+<p><strong>Quality Controls considered for Training Data:</strong></p>
+<ol class="arabic simple">
+<li><p>GWAS studies, e.g., removing SNPs with low genotyping rate, low minor allele frequency, out of Hardy-Weinberg Equilibrium, removing individuals with low genotyping rate.</p></li>
+<li><p>Pruning was skipped.</p></li>
+<li><p>Heterozygosity check.</p></li>
+<li><p>Sex chromosomes.</p></li>
+<li><p>Relatedness.</p></li>
+</ol>
+<p><strong>R Script - Module1.R</strong></p>
+<p>This file contains the code presented in this <a class="reference external" href="https://choishingwan.github.io/PRS-Tutorial/base/">tutorial</a> to assist in performing quality controls on the training data. Kindly, follow their instructions for better understanding, as quality controls are not the main focus of this research.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">FileLink</span>
+
+<span class="c1"># R file used in to execute the following code.</span>
+<span class="n">FileLink</span><span class="p">(</span><span class="s1">&#39;Module1.R&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><a href='Module1.R' target='_blank'>Module1.R</a><br></div></div>
+</div>
+<p><strong>R Script - Module1.R</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
+
+<span class="c1"># Step 1: Read the Fam file</span>
+
+<span class="n">input_file_path</span> <span class="o">=</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_file_path</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Create 5 directories for storing fold information</span>
+<span class="n">output_directory_base</span> <span class="o">=</span> <span class="n">filedirec</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_directory_base</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Split the data into 5 folds using cross validation </span>
+<span class="n">fold_column</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># fifth column contains phenotypes</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">phenotype_col</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># The following code is for binary phenotype.</span>
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">column_values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">phenotype_col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">column_values</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The column contains only 0 and 1.&quot;</span><span class="p">)</span>
+    <span class="c1">#exit(0)</span>
+    <span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">phenotype_col</span><span class="p">])):</span>
+        <span class="n">fold_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_directory_base</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Fold_</span><span class="si">{</span><span class="n">fold_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">train_file_name</span> <span class="o">=</span> <span class="s2">&quot;train_data&quot;</span>
+        <span class="n">test_file_name</span> <span class="o">=</span> <span class="s2">&quot;test_data&quot;</span>
+
+        <span class="n">new_train_file_name</span> <span class="o">=</span> <span class="s2">&quot;train_data.QC&quot;</span>
+        <span class="n">new_test_file_name</span> <span class="o">=</span> <span class="s2">&quot;test_data.QC&quot;</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#&quot;&quot;&quot;</span>
+        <span class="c1"># Save train and test data to separate CSV files</span>
+        <span class="n">train_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+        <span class="n">test_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+        
+        <span class="n">train_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data.fam&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">test_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;test_data.fam&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1">#print(train_data)</span>
+        <span class="c1">#exit(0)</span>
+        
+        <span class="c1">#exit(0)</span>
+        <span class="c1"># Step 4: Use PLINK to extract test and train samples for each fold</span>
+        <span class="n">plink_train_command</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="p">,</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="n">plink_test_command</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="p">,</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">test_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">test_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_train_command</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_test_command</span><span class="p">)</span>
+        
+        <span class="n">covfile</span> <span class="o">=</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="o">+</span><span class="s1">&#39;.cov&#39;</span>
+        <span class="n">covfile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">covfile</span><span class="p">)</span>
+
+        <span class="n">cov_train_data</span> <span class="o">=</span> <span class="n">covfile</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+        <span class="n">cov_test_data</span> <span class="o">=</span> <span class="n">covfile</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+        <span class="n">cov_train_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.cov&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cov_test_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">test_file_name</span><span class="o">+</span><span class="s1">&#39;.cov&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1">#exit(0)</span>
+        <span class="c1">### perform Quality controls on the training data only.</span>
+        <span class="n">plink_command_1</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--maf&#39;</span><span class="p">,</span> <span class="s1">&#39;0.01&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--hwe&#39;</span><span class="p">,</span> <span class="s1">&#39;1e-6&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--geno&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--mind&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--write-snplist&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--make-just-fam&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_1</span><span class="p">)</span>
+        
+        <span class="c1"># Command 2</span>
+        <span class="c1"># Perform pruning. Skip it.</span>
+        <span class="n">plink_command_2</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--indep-pairwise&#39;</span><span class="p">,</span> <span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;0.25&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="c1">#subprocess.run(plink_command_2)</span>
+        
+        <span class="c1"># Command 3</span>
+        <span class="n">plink_command_3</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="c1">#&#39;--extract&#39;, os.path.join(fold_directory, new_train_file_name+&#39;.prune.in&#39;),</span>
+            <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--het&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_3</span><span class="p">)</span>
+        <span class="c1"># Invoked R functions.</span>
+        
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;Rscript Module1.R &quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;  &quot;</span><span class="o">+</span><span class="n">train_file_name</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">new_train_file_name</span><span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">+</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rscript Module1.R &quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;  &quot;</span><span class="o">+</span><span class="n">train_file_name</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">new_train_file_name</span><span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">+</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+         
+        
+        <span class="c1"># Code for sex check: The sample data have 22 chromosomes, so this operation is skipped.</span>
+        <span class="c1"># If the Chromosome X is not available, then do not execute the following two commands. </span>
+        <span class="n">plink_command</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data&#39;</span><span class="p">),</span>
+        <span class="c1">#&#39;--extract&#39;, os.path.join(fold_directory, &#39;train_data.QC.prune.in&#39;),</span>
+        <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data.valid.sample&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;--check-sex&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data.QC&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+        
+        <span class="c1"># Invoke the PLINK command using subprocess for sex check</span>
+        <span class="c1">#subprocess.run(plink_command)</span>
+        <span class="c1">#os.system(&quot;Rscript Module1.R &quot;+os.path.join(fold_directory)+&quot;  &quot;+train_file_name+&quot; &quot;+new_train_file_name+ &quot; &quot;+&quot;2&quot;)</span>
+        
+        <span class="c1">#&quot;&quot;&quot;</span>
+    
+        <span class="n">plink_command_1</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+        <span class="c1">#&#39;--extract&#39;, os.path.join(fold_directory, new_train_file_name+&#39;.prune.in&#39;),</span>
+        <span class="c1"># If you use sex check, then use the following line. Otherwise, it is not required.</span>
+        <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+
+        <span class="c1"># Uncomment the following line if the sex Chromosome is available.</span>
+        <span class="c1"># Kindly not, if you perform Sex check, and some people are removed, you have to</span>
+        <span class="c1"># remove people from covariate file and Phenotype file.</span>
+            
+        <span class="c1">#&#39;--keep&#39;, os.path.join(fold_directory, &#39;train_data.QC.valid&#39;),</span>
+        <span class="s1">&#39;--rel-cutoff&#39;</span><span class="p">,</span> <span class="s1">&#39;0.125&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+        
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_1</span><span class="p">)</span>
+         
+         
+        <span class="n">plink_command_2</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.rel.id&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--exclude&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.mismatch&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--a1-allele&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.a1&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_2</span><span class="p">)</span>
+         
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The column does not contain only 0 and 1.&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">phenotype_col</span><span class="p">])):</span>
+        <span class="n">fold_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_directory_base</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Fold_</span><span class="si">{</span><span class="n">fold_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">train_file_name</span> <span class="o">=</span> <span class="s2">&quot;train_data&quot;</span>
+        <span class="n">test_file_name</span> <span class="o">=</span> <span class="s2">&quot;test_data&quot;</span>
+
+        <span class="n">new_train_file_name</span> <span class="o">=</span> <span class="s2">&quot;train_data.QC&quot;</span>
+        <span class="n">new_test_file_name</span> <span class="o">=</span> <span class="s2">&quot;test_data.QC&quot;</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#&quot;&quot;&quot;</span>
+        <span class="c1"># Save train and test data to separate CSV files</span>
+        <span class="n">train_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+        <span class="n">test_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+        
+        <span class="n">train_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data.fam&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">test_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;test_data.fam&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1">#print(train_data)</span>
+        <span class="c1">#exit(0)</span>
+        
+        <span class="c1">#exit(0)</span>
+        <span class="c1"># Step 4: Use PLINK to extract test and train samples for each fold</span>
+        <span class="n">plink_train_command</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="p">,</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="n">plink_test_command</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="p">,</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">test_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">test_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_train_command</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_test_command</span><span class="p">)</span>
+        
+        <span class="n">covfile</span> <span class="o">=</span> <span class="n">filedirec</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">newfilename</span><span class="o">+</span><span class="s1">&#39;.cov&#39;</span>
+        <span class="n">covfile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">covfile</span><span class="p">)</span>
+
+        <span class="n">cov_train_data</span> <span class="o">=</span> <span class="n">covfile</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+        <span class="n">cov_test_data</span> <span class="o">=</span> <span class="n">covfile</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+        <span class="n">cov_train_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.cov&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cov_test_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">test_file_name</span><span class="o">+</span><span class="s1">&#39;.cov&#39;</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1">#exit(0)</span>
+        <span class="c1">### perform Quality controls on the training data only.</span>
+        <span class="n">plink_command_1</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--maf&#39;</span><span class="p">,</span> <span class="s1">&#39;0.01&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--hwe&#39;</span><span class="p">,</span> <span class="s1">&#39;1e-6&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--geno&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--mind&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--write-snplist&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--make-just-fam&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_1</span><span class="p">)</span>
+        
+        <span class="c1"># Command 2</span>
+        <span class="n">plink_command_2</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--indep-pairwise&#39;</span><span class="p">,</span> <span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;0.25&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="c1">#subprocess.run(plink_command_2)</span>
+        
+        <span class="c1"># Command 3</span>
+        <span class="n">plink_command_3</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="c1">#&#39;--extract&#39;, os.path.join(fold_directory, new_train_file_name+&#39;.prune.in&#39;),</span>
+            <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.fam&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--het&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_3</span><span class="p">)</span>
+        <span class="c1"># Invoked R functions.</span>
+        
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;Rscript Module1.R &quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;  &quot;</span><span class="o">+</span><span class="n">train_file_name</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">new_train_file_name</span><span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">+</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rscript Module1.R &quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;  &quot;</span><span class="o">+</span><span class="n">train_file_name</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">new_train_file_name</span><span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">+</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        
+        
+        
+        <span class="c1"># Code for sex check: The sample data have 22 chromosomes, so this operation is skipped.</span>
+        <span class="c1"># If the Chromosome X is not available, then do not execute the following two commands. </span>
+        <span class="c1">#&quot;&quot;&quot;</span>
+        <span class="n">plink_command</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data&#39;</span><span class="p">),</span>
+        <span class="c1">#&#39;--extract&#39;, os.path.join(fold_directory, &#39;train_data.QC.prune.in&#39;),</span>
+        <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data.valid.sample&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;--check-sex&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="s1">&#39;train_data.QC&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+        
+        <span class="c1"># Invoke the PLINK command using subprocess for sex check</span>
+         
+        <span class="c1">#subprocess.run(plink_command)</span>
+        <span class="c1">#os.system(&quot;Rscript Module1.R &quot;+os.path.join(fold_directory)+&quot;  &quot;+train_file_name+&quot; &quot;+new_train_file_name+ &quot; &quot;+&quot;2&quot;)</span>
+        
+        <span class="c1">#&quot;&quot;&quot;</span>
+    
+        <span class="n">plink_command_1</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+        <span class="c1">#&#39;--extract&#39;, os.path.join(fold_directory, new_train_file_name+&#39;.prune.in&#39;),</span>
+        <span class="c1"># If you use sex check then use the following line. Otherwise it is not required.</span>
+        <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+        <span class="c1">#&#39;--keep&#39;, os.path.join(fold_directory, &#39;train_data.QC.valid&#39;),</span>
+        <span class="s1">&#39;--rel-cutoff&#39;</span><span class="p">,</span> <span class="s1">&#39;0.125&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">)</span>
+        <span class="p">]</span>
+        
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_1</span><span class="p">)</span>
+        <span class="c1">#exit(0)</span>
+        
+        <span class="c1">#exit(0)</span>
+        <span class="c1"># Command 2</span>
+        <span class="n">plink_command_2</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;./plink&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--bfile&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--make-bed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;--keep&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.rel.id&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--out&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="p">),</span>
+            <span class="s1">&#39;--extract&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">new_train_file_name</span><span class="o">+</span><span class="s1">&#39;.snplist&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--exclude&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.mismatch&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;--a1-allele&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fold_directory</span><span class="p">,</span> <span class="n">train_file_name</span><span class="o">+</span><span class="s1">&#39;.a1&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+    
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plink_command_2</span><span class="p">)</span>
+        <span class="c1">#exit(0)</span>
+ 
+
+
+
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The column does not contain only 0 and 1.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_0/train_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_0/train_data.fam
+  --make-bed
+  --out SampleData1/Fold_0/train_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_0/train_data.bed +
+SampleData1/Fold_0/train_data.bim + SampleData1/Fold_0/train_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_0/test_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_0/test_data.fam
+  --make-bed
+  --out SampleData1/Fold_0/test_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 95 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 95 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 95 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_0/test_data.bed +
+SampleData1/Fold_0/test_data.bim + SampleData1/Fold_0/test_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_0/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_0/train_data
+  --geno 0.1
+  --hwe 1e-6
+  --maf 0.01
+  --make-just-fam
+  --mind 0.1
+  --out SampleData1/Fold_0/train_data.QC
+  --write-snplist
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (183 males, 197 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+0 people removed due to missing genotype data (--mind).
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999896.
+1 variant removed due to missing genotype data (--geno).
+--hwe: 822 variants removed due to Hardy-Weinberg exact test.
+8415 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+542654 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+List of variant IDs written to SampleData1/Fold_0/train_data.QC.snplist .
+--make-just-fam to SampleData1/Fold_0/train_data.QC.fam ... done.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: --hwe observation counts vary by more than 10%, due to the X
+chromosome.  You may want to use a less stringent --hwe p-value threshold for X
+chromosome variants.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_0/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_0/train_data
+  --extract SampleData1/Fold_0/train_data.QC.snplist
+  --het
+  --keep SampleData1/Fold_0/train_data.QC.fam
+  --out SampleData1/Fold_0/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (183 males, 197 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542654 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999898.
+542654 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--het: 521371 variants scanned, report written to
+SampleData1/Fold_0/train_data.QC.het .
+[1] &quot;SampleData1/Fold_0&quot; &quot;train_data&quot;         &quot;train_data.QC&quot;     
+[4] &quot;1&quot;                 
+[1] &quot;SampleData1&quot; &quot;Fold_0&quot;     
+[1] &quot;SampleData1&quot;
+[1] 14
+[1] 14
+[1] 14
+Rscript Module1.R SampleData1/Fold_0  train_data train_data.QC 1
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_0/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_0/train_data
+  --extract SampleData1/Fold_0/train_data.QC.snplist
+  --out SampleData1/Fold_0/train_data.QC
+  --rel-cutoff 0.125
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (183 males, 197 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542654 variants remaining.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999898.
+542654 variants and 380 people pass filters and QC (before --rel-cutoff).
+Phenotype data is quantitative.
+Excluding 21283 variants on non-autosomes from relationship matrix calc.
+Relationship matrix calculation complete.
+0 people excluded by --rel-cutoff.
+Remaining sample IDs written to SampleData1/Fold_0/train_data.QC.rel.id .
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_0/train_data.QC.log.
+Options in effect:
+  --a1-allele SampleData1/Fold_0/train_data.a1
+  --bfile SampleData1/Fold_0/train_data
+  --exclude SampleData1/Fold_0/train_data.mismatch
+  --extract SampleData1/Fold_0/train_data.QC.snplist
+  --keep SampleData1/Fold_0/train_data.QC.rel.id
+  --make-bed
+  --out SampleData1/Fold_0/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (183 males, 197 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542654 variants remaining.
+--exclude: 491952 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999894.
+--a1-allele: 491952 assignments made.
+491952 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_0/train_data.QC.bed +
+SampleData1/Fold_0/train_data.QC.bim + SampleData1/Fold_0/train_data.QC.fam ...
+101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_1/train_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_1/train_data.fam
+  --make-bed
+  --out SampleData1/Fold_1/train_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999922.
+551892 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_1/train_data.bed +
+SampleData1/Fold_1/train_data.bim + SampleData1/Fold_1/train_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_1/test_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_1/test_data.fam
+  --make-bed
+  --out SampleData1/Fold_1/test_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 95 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 95 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999794.
+551892 variants and 95 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_1/test_data.bed +
+SampleData1/Fold_1/test_data.bim + SampleData1/Fold_1/test_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_1/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_1/train_data
+  --geno 0.1
+  --hwe 1e-6
+  --maf 0.01
+  --make-just-fam
+  --mind 0.1
+  --out SampleData1/Fold_1/train_data.QC
+  --write-snplist
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (178 males, 202 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+0 people removed due to missing genotype data (--mind).
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999922.
+1 variant removed due to missing genotype data (--geno).
+--hwe: 855 variants removed due to Hardy-Weinberg exact test.
+7923 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+543113 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+List of variant IDs written to SampleData1/Fold_1/train_data.QC.snplist .
+--make-just-fam to SampleData1/Fold_1/train_data.QC.fam ... done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_1/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_1/train_data
+  --extract SampleData1/Fold_1/train_data.QC.snplist
+  --het
+  --keep SampleData1/Fold_1/train_data.QC.fam
+  --out SampleData1/Fold_1/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (178 males, 202 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 543113 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: --hwe observation counts vary by more than 10%, due to the X
+chromosome.  You may want to use a less stringent --hwe p-value threshold for X
+chromosome variants.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>989 done.
+Total genotyping rate is 0.999923.
+543113 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--het: 521800 variants scanned, report written to
+SampleData1/Fold_1/train_data.QC.het .
+[1] &quot;SampleData1/Fold_1&quot; &quot;train_data&quot;         &quot;train_data.QC&quot;     
+[4] &quot;1&quot;                 
+[1] &quot;SampleData1&quot; &quot;Fold_1&quot;     
+[1] &quot;SampleData1&quot;
+[1] 14
+[1] 14
+[1] 14
+Rscript Module1.R SampleData1/Fold_1  train_data train_data.QC 1
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_1/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_1/train_data
+  --extract SampleData1/Fold_1/train_data.QC.snplist
+  --out SampleData1/Fold_1/train_data.QC
+  --rel-cutoff 0.125
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (178 males, 202 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 543113 variants remaining.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999923.
+543113 variants and 380 people pass filters and QC (before --rel-cutoff).
+Phenotype data is quantitative.
+Excluding 21313 variants on non-autosomes from relationship matrix calc.
+Relationship matrix calculation complete.
+0 people excluded by --rel-cutoff.
+Remaining sample IDs written to SampleData1/Fold_1/train_data.QC.rel.id .
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_1/train_data.QC.log.
+Options in effect:
+  --a1-allele SampleData1/Fold_1/train_data.a1
+  --bfile SampleData1/Fold_1/train_data
+  --exclude SampleData1/Fold_1/train_data.mismatch
+  --extract SampleData1/Fold_1/train_data.QC.snplist
+  --keep SampleData1/Fold_1/train_data.QC.rel.id
+  --make-bed
+  --out SampleData1/Fold_1/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (178 males, 202 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 543113 variants remaining.
+--exclude: 492382 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.99992.
+--a1-allele: 492382 assignments made.
+492382 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_1/train_data.QC.bed +
+SampleData1/Fold_1/train_data.QC.bim + SampleData1/Fold_1/train_data.QC.fam ...
+101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_2/train_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_2/train_data.fam
+  --make-bed
+  --out SampleData1/Fold_2/train_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_2/train_data.bed +
+SampleData1/Fold_2/train_data.bim + SampleData1/Fold_2/train_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_2/test_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_2/test_data.fam
+  --make-bed
+  --out SampleData1/Fold_2/test_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 95 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 95 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 95 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_2/test_data.bed +
+SampleData1/Fold_2/test_data.bim + SampleData1/Fold_2/test_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_2/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_2/train_data
+  --geno 0.1
+  --hwe 1e-6
+  --maf 0.01
+  --make-just-fam
+  --mind 0.1
+  --out SampleData1/Fold_2/train_data.QC
+  --write-snplist
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (180 males, 200 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+0 people removed due to missing genotype data (--mind).
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999896.
+1 variant removed due to missing genotype data (--geno).
+--hwe: 847 variants removed due to Hardy-Weinberg exact test.
+8536 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+542508 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+List of variant IDs written to SampleData1/Fold_2/train_data.QC.snplist .
+--make-just-fam to SampleData1/Fold_2/train_data.QC.fam ... done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_2/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_2/train_data
+  --extract SampleData1/Fold_2/train_data.QC.snplist
+  --het
+  --keep SampleData1/Fold_2/train_data.QC.fam
+  --out SampleData1/Fold_2/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (180 males, 200 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542508 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 1011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: --hwe observation counts vary by more than 10%, due to the X
+chromosome.  You may want to use a less stringent --hwe p-value threshold for X
+chromosome variants.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8788899091929394959697989 done.
+Total genotyping rate is 0.999898.
+542508 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--het: 521405 variants scanned, report written to
+SampleData1/Fold_2/train_data.QC.het .
+[1] &quot;SampleData1/Fold_2&quot; &quot;train_data&quot;         &quot;train_data.QC&quot;     
+[4] &quot;1&quot;                 
+[1] &quot;SampleData1&quot; &quot;Fold_2&quot;     
+[1] &quot;SampleData1&quot;
+[1] 14
+[1] 14
+[1] 14
+Rscript Module1.R SampleData1/Fold_2  train_data train_data.QC 1
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_2/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_2/train_data
+  --extract SampleData1/Fold_2/train_data.QC.snplist
+  --out SampleData1/Fold_2/train_data.QC
+  --rel-cutoff 0.125
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (180 males, 200 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542508 variants remaining.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999898.
+542508 variants and 380 people pass filters and QC (before --rel-cutoff).
+Phenotype data is quantitative.
+Excluding 21103 variants on non-autosomes from relationship matrix calc.
+Relationship matrix calculation complete.
+0 people excluded by --rel-cutoff.
+Remaining sample IDs written to SampleData1/Fold_2/train_data.QC.rel.id .
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_2/train_data.QC.log.
+Options in effect:
+  --a1-allele SampleData1/Fold_2/train_data.a1
+  --bfile SampleData1/Fold_2/train_data
+  --exclude SampleData1/Fold_2/train_data.mismatch
+  --extract SampleData1/Fold_2/train_data.QC.snplist
+  --keep SampleData1/Fold_2/train_data.QC.rel.id
+  --make-bed
+  --out SampleData1/Fold_2/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (180 males, 200 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542508 variants remaining.
+--exclude: 491965 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999894.
+--a1-allele: 491965 assignments made.
+491965 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_2/train_data.QC.bed +
+SampleData1/Fold_2/train_data.QC.bim + SampleData1/Fold_2/train_data.QC.fam ...
+101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_3/train_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_3/train_data.fam
+  --make-bed
+  --out SampleData1/Fold_3/train_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999871.
+551892 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_3/train_data.bed +
+SampleData1/Fold_3/train_data.bim + SampleData1/Fold_3/train_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_3/test_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_3/test_data.fam
+  --make-bed
+  --out SampleData1/Fold_3/test_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 95 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 95 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999998.
+551892 variants and 95 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_3/test_data.bed +
+SampleData1/Fold_3/test_data.bim + SampleData1/Fold_3/test_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_3/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_3/train_data
+  --geno 0.1
+  --hwe 1e-6
+  --maf 0.01
+  --make-just-fam
+  --mind 0.1
+  --out SampleData1/Fold_3/train_data.QC
+  --write-snplist
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (181 males, 199 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+0 people removed due to missing genotype data (--mind).
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999871.
+1 variant removed due to missing genotype data (--geno).
+--hwe: 841 variants removed due to Hardy-Weinberg exact test.
+8339 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+542711 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+List of variant IDs written to SampleData1/Fold_3/train_data.QC.snplist .
+--make-just-fam to SampleData1/Fold_3/train_data.QC.fam ... done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_3/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_3/train_data
+  --extract SampleData1/Fold_3/train_data.QC.snplist
+  --het
+  --keep SampleData1/Fold_3/train_data.QC.fam
+  --out SampleData1/Fold_3/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (181 males, 199 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542711 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: --hwe observation counts vary by more than 10%, due to the X
+chromosome.  You may want to use a less stringent --hwe p-value threshold for X
+chromosome variants.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>838485868788899091929394959697989 done.
+Total genotyping rate is 0.999872.
+542711 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--het: 521511 variants scanned, report written to
+SampleData1/Fold_3/train_data.QC.het .
+[1] &quot;SampleData1/Fold_3&quot; &quot;train_data&quot;         &quot;train_data.QC&quot;     
+[4] &quot;1&quot;                 
+[1] &quot;SampleData1&quot; &quot;Fold_3&quot;     
+[1] &quot;SampleData1&quot;
+[1] 14
+[1] 14
+[1] 14
+Rscript Module1.R SampleData1/Fold_3  train_data train_data.QC 1
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_3/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_3/train_data
+  --extract SampleData1/Fold_3/train_data.QC.snplist
+  --out SampleData1/Fold_3/train_data.QC
+  --rel-cutoff 0.125
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (181 males, 199 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542711 variants remaining.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999872.
+542711 variants and 380 people pass filters and QC (before --rel-cutoff).
+Phenotype data is quantitative.
+Excluding 21200 variants on non-autosomes from relationship matrix calc.
+Relationship matrix calculation complete.
+0 people excluded by --rel-cutoff.
+Remaining sample IDs written to SampleData1/Fold_3/train_data.QC.rel.id .
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_3/train_data.QC.log.
+Options in effect:
+  --a1-allele SampleData1/Fold_3/train_data.a1
+  --bfile SampleData1/Fold_3/train_data
+  --exclude SampleData1/Fold_3/train_data.mismatch
+  --extract SampleData1/Fold_3/train_data.QC.snplist
+  --keep SampleData1/Fold_3/train_data.QC.rel.id
+  --make-bed
+  --out SampleData1/Fold_3/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (181 males, 199 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542711 variants remaining.
+--exclude: 492072 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999868.
+--a1-allele: 492072 assignments made.
+492072 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_3/train_data.QC.bed +
+SampleData1/Fold_3/train_data.QC.bim + SampleData1/Fold_3/train_data.QC.fam ...
+101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_4/train_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_4/train_data.fam
+  --make-bed
+  --out SampleData1/Fold_4/train_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_4/train_data.bed +
+SampleData1/Fold_4/train_data.bim + SampleData1/Fold_4/train_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_4/test_data.log.
+Options in effect:
+  --bfile SampleData1/SampleData1_QC
+  --keep SampleData1/Fold_4/test_data.fam
+  --make-bed
+  --out SampleData1/Fold_4/test_data
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+475 people (227 males, 248 females) loaded from .fam.
+475 phenotype values loaded from .fam.
+--keep: 95 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 95 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate in remaining samples is 0.999896.
+551892 variants and 95 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_4/test_data.bed +
+SampleData1/Fold_4/test_data.bim + SampleData1/Fold_4/test_data.fam ... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_4/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_4/train_data
+  --geno 0.1
+  --hwe 1e-6
+  --maf 0.01
+  --make-just-fam
+  --mind 0.1
+  --out SampleData1/Fold_4/train_data.QC
+  --write-snplist
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (186 males, 194 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+0 people removed due to missing genotype data (--mind).
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999896.
+1 variant removed due to missing genotype data (--geno).
+--hwe: 828 variants removed due to Hardy-Weinberg exact test.
+8533 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+542530 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+List of variant IDs written to SampleData1/Fold_4/train_data.QC.snplist .
+--make-just-fam to SampleData1/Fold_4/train_data.QC.fam ... done.
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_4/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_4/train_data
+  --extract SampleData1/Fold_4/train_data.QC.snplist
+  --het
+  --keep SampleData1/Fold_4/train_data.QC.fam
+  --out SampleData1/Fold_4/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (186 males, 194 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542530 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: --hwe observation counts vary by more than 10%, due to the X
+chromosome.  You may want to use a less stringent --hwe p-value threshold for X
+chromosome variants.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>97989 done.
+Total genotyping rate is 0.999898.
+542530 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--het: 521557 variants scanned, report written to
+SampleData1/Fold_4/train_data.QC.het .
+[1] &quot;SampleData1/Fold_4&quot; &quot;train_data&quot;         &quot;train_data.QC&quot;     
+[4] &quot;1&quot;                 
+[1] &quot;SampleData1&quot; &quot;Fold_4&quot;     
+[1] &quot;SampleData1&quot;
+[1] 14
+[1] 14
+[1] 14
+Rscript Module1.R SampleData1/Fold_4  train_data train_data.QC 1
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_4/train_data.QC.log.
+Options in effect:
+  --bfile SampleData1/Fold_4/train_data
+  --extract SampleData1/Fold_4/train_data.QC.snplist
+  --out SampleData1/Fold_4/train_data.QC
+  --rel-cutoff 0.125
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (186 males, 194 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542530 variants remaining.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999898.
+542530 variants and 380 people pass filters and QC (before --rel-cutoff).
+Phenotype data is quantitative.
+Excluding 20973 variants on non-autosomes from relationship matrix calc.
+Relationship matrix calculation complete.
+0 people excluded by --rel-cutoff.
+Remaining sample IDs written to SampleData1/Fold_4/train_data.QC.rel.id .
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to SampleData1/Fold_4/train_data.QC.log.
+Options in effect:
+  --a1-allele SampleData1/Fold_4/train_data.a1
+  --bfile SampleData1/Fold_4/train_data
+  --exclude SampleData1/Fold_4/train_data.mismatch
+  --extract SampleData1/Fold_4/train_data.QC.snplist
+  --keep SampleData1/Fold_4/train_data.QC.rel.id
+  --make-bed
+  --out SampleData1/Fold_4/train_data.QC
+
+63761 MB RAM detected; reserving 31880 MB for main workspace.
+551892 variants loaded from .bim file.
+380 people (186 males, 194 females) loaded from .fam.
+380 phenotype values loaded from .fam.
+--extract: 542530 variants remaining.
+--exclude: 492135 variants remaining.
+--keep: 380 people remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 380 founders and 0 nonfounders present.
+Calculating allele frequencies... 10111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989 done.
+Total genotyping rate is 0.999894.
+--a1-allele: 492135 assignments made.
+492135 variants and 380 people pass filters and QC.
+Phenotype data is quantitative.
+--make-bed to SampleData1/Fold_4/train_data.QC.bed +
+SampleData1/Fold_4/train_data.QC.bim + SampleData1/Fold_4/train_data.QC.fam ...
+101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899done.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="check-final-files">
+<h2>Check final files.<a class="headerlink" href="#check-final-files" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># List of file names to check for existence</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;train_data.QC.bed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;train_data.QC.bim&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;train_data.QC.fam&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;train_data.cov&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_data.bed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_data.bim&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_data.fam&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_data.cov&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Directory where the files are expected to be found</span>
+
+<span class="c1"># Print the table header</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;20}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;File Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold 0&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold 4&quot;</span><span class="p">))</span>
+
+<span class="c1"># Loop through each file name in the list</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="c1"># Create a list to store the existence status for each fold</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Check for each fold from 0 to 4</span>
+    <span class="k">for</span> <span class="n">fold_number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="c1"># Check if the file exists in the specified directory for the given fold</span>
+        <span class="c1">#print(os.path.join(&quot;./&quot;,filedirec, f&quot;Fold_{fold_number}&quot;, file))</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filedirec</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="s2">&quot;Fold_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fold_number</span><span class="p">)</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">file</span><span class="p">):</span>
+            <span class="n">status</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">status</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;no&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Print the file name and its status for each fold</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;20}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2"> </span><span class="si">{:&lt;5}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">status</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File Name            Fold 0 Fold 1 Fold 2 Fold 3 Fold 4
+train_data.QC.bed    yes   yes   yes   yes   yes  
+train_data.QC.bim    yes   yes   yes   yes   yes  
+train_data.QC.fam    yes   yes   yes   yes   yes  
+train_data.cov       yes   yes   yes   yes   yes  
+test_data.bed        yes   yes   yes   yes   yes  
+test_data.bim        yes   yes   yes   yes   yes  
+test_data.fam        yes   yes   yes   yes   yes  
+test_data.cov        yes   yes   yes   yes   yes  
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will have the following directories if everything works fine.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── Fold_0
+│   ├── test_data.bed
+│   ├── test_data.bim
+│   ├── test_data.cov
+│   ├── test_data.fam
+│   ├── test_data.log
+│   ├── train_data.a1
+│   ├── train_data.bed
+│   ├── train_data.bim
+│   ├── train_data.cov
+│   ├── train_data.fam
+│   ├── train_data.log
+│   ├── train_data.mismatch
+│   ├── train_data.QC.bed
+│   ├── train_data.QC.bim
+│   ├── train_data.QC.fam
+│   ├── train_data.QC.het
+│   ├── train_data.QC.log
+│   ├── train_data.QC.rel.id
+│   ├── train_data.QC.sexcheck
+│   ├── train_data.QC.snplist
+│   ├── train_data.QC.valid
+│   └── train_data.valid.sample
+├── Fold_1
+ 
+├── Fold_2
+ 
+├── Fold_3
+ 
+├── Fold_4
+
+├── PeopleWithPhenotype.txt
+├── SampleData1.bed
+├── SampleData1.bim
+├── SampleData1.cov
+├── SampleData1.fam
+├── SampleData1.gz
+├── SampleData1.height
+├── SampleData1_QC.bed
+├── SampleData1_QC.bim
+├── SampleData1_QC.cov
+├── SampleData1_QC.fam
+└── SampleData1_QC.log
+</pre></div>
+</div>
+</section>
+<section id="important-note">
+<h2>Important Note<a class="headerlink" href="#important-note" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Kindly ensure you have all the files required for the next step after the completion of this step.</p></li>
+<li><p>It is better to pass the dataset on which quality controls have already been performed.</p></li>
+<li><p>We considered genotype files for which chromosomes 1 to 22 are available, and sex information is present. If you want to use the function in the script to check the sex information, ensure the genotype file includes other chromosomes as well.</p></li>
+<li><p>Go through the logs generated by the code if an error occurs. Even if no error occurs, it is always good to ensure that the log file does not produce any errors.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Step1-DownloadSampleDataandSetupEnvironment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Step1-DownloadSampleDataandSetupEnvironment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="NotebooksWorkflow.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Polygenic Risk Score Tools Notebooks Workflow</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-gwas-file">Note on GWAS File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#genome-wide-association-study-gwas-base-data-quality-controls">Genome-Wide Association Study (GWAS) (Base Data) - Quality Controls</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-directory-where-the-files-are-located">Set the directory where the files are located</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-variants-between-gwas-and-individual-genotype-data">Match Variants Between GWAS and Individual Genotype Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-for-handling-rsids-in-gwas-and-genotype-data">Steps for Handling RSIDs in GWAS and Genotype Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-genotype-data-target-data-processing">Individual genotype data (Target Data) Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-people-with-missing-phenotype">Remove people with missing Phenotype</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data-into-test-and-train-and-perform-quality-controls-on-training-data">Split Data into Test and Train and Perform Quality Controls on Training Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruning">Pruning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-designs">Cross-validation Designs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-analysis">A Simple Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-final-files">Check final files.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-note">Important Note</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Muneeb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

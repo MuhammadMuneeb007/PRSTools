@@ -1,0 +1,106 @@
+Traceback (most recent call last):
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\site-packages\jupyter_core\utils\__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\kl\anaconda3\envs\fuck\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from operator import index
+import pandas as pd
+import numpy as np
+import os
+import subprocess
+import sys
+import pandas as pd
+import statsmodels.api as sm
+import pandas as pd
+from sklearn.metrics import roc_auc_score, confusion_matrix
+from statsmodels.stats.contingency_tables import mcnemar
+
+def create_directory(directory):
+    """Function to create a directory if it doesn't exist."""
+    if not os.path.exists(directory):  # Checking if the directory doesn't exist
+        os.makedirs(directory)  # Creating the directory if it doesn't exist
+    return directory  # Returning the created or existing directory
+
+ 
+#foldnumber = sys.argv[1]
+foldnumber = "0"  # Setting 'foldnumber' to "0"
+
+folddirec = filedirec + os.sep + "Fold_" + foldnumber  # Creating a directory path for the specific fold
+trainfilename = "train_data"  # Setting the name of the training data file
+newtrainfilename = "train_data.QC"  # Setting the name of the new training data file
+
+testfilename = "test_data"  # Setting the name of the test data file
+newtestfilename = "test_data.QC"  # Setting the name of the new test data file
+
+# Number of PCA to be included as a covariate.
+numberofpca = ["6"]  # Setting the number of PCA components to be included
+
+# Clumping parameters.
+clump_p1 = [1]  # List containing clump parameter 'p1'
+clump_r2 = [0.1]  # List containing clump parameter 'r2'
+clump_kb = [200]  # List containing clump parameter 'kb'
+
+# Pruning parameters.
+p_window_size = [200]  # List containing pruning parameter 'window_size'
+p_slide_size = [50]  # List containing pruning parameter 'slide_size'
+p_LD_threshold = [0.25]  # List containing pruning parameter 'LD_threshold'
+
+# Kindly note that the number of p-values to be considered varies, and the actual p-value depends on the dataset as well.
+# We will specify the range list here.
+
+minimumpvalue = 10  # Minimum p-value in exponent
+numberofintervals = 20  # Number of intervals to be considered
+allpvalues = np.logspace(-minimumpvalue, 0, numberofintervals, endpoint=True)  # Generating an array of logarithmically spaced p-values
+
+
+
+count = 1
+with open(folddirec + os.sep + 'range_list', 'w') as file:
+    for value in allpvalues:
+        file.write(f'pv_{value} 0 {value}\n')  # Writing range information to the 'range_list' file
+        count = count + 1
+
+pvaluefile = folddirec + os.sep + 'range_list'
+
+# Initializing an empty DataFrame with specified column names
+prs_result = pd.DataFrame(columns=["clump_p1", "clump_r2", "clump_kb", "p_window_size", "p_slide_size", "p_LD_threshold",
+                                   "pvalue", "numberofpca","numberofvariants","Train_pure_prs", "Train_null_model", "Train_best_model",
+                                   "Test_pure_prs", "Test_null_model", "Test_best_model"])
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [1;32mIn[2], line 53[0m
+[0;32m     48[0m allpvalues [38;5;241m=[39m np[38;5;241m.[39mlogspace([38;5;241m-[39mminimumpvalue, [38;5;241m0[39m, numberofintervals, endpoint[38;5;241m=[39m[38;5;28;01mTrue[39;00m)  [38;5;66;03m# Generating an array of logarithmically spaced p-values[39;00m
+[0;32m     52[0m count [38;5;241m=[39m [38;5;241m1[39m
+[1;32m---> 53[0m [38;5;28;01mwith[39;00m [38;5;28;43mopen[39;49m[43m([49m[43mfolddirec[49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[43mos[49m[38;5;241;43m.[39;49m[43msep[49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mrange_list[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mw[39;49m[38;5;124;43m'[39;49m[43m)[49m [38;5;28;01mas[39;00m file:
+[0;32m     54[0m     [38;5;28;01mfor[39;00m value [38;5;129;01min[39;00m allpvalues:
+[0;32m     55[0m         file[38;5;241m.[39mwrite([38;5;124mf[39m[38;5;124m'[39m[38;5;124mpv_[39m[38;5;132;01m{[39;00mvalue[38;5;132;01m}[39;00m[38;5;124m 0 [39m[38;5;132;01m{[39;00mvalue[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m'[39m)  [38;5;66;03m# Writing range information to the 'range_list' file[39;00m
+
+File [1;32m~\anaconda3\envs\fuck\Lib\site-packages\IPython\core\interactiveshell.py:310[0m, in [0;36m_modified_open[1;34m(file, *args, **kwargs)[0m
+[0;32m    303[0m [38;5;28;01mif[39;00m file [38;5;129;01min[39;00m {[38;5;241m0[39m, [38;5;241m1[39m, [38;5;241m2[39m}:
+[0;32m    304[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[0;32m    305[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mIPython won[39m[38;5;124m'[39m[38;5;124mt let you open fd=[39m[38;5;132;01m{[39;00mfile[38;5;132;01m}[39;00m[38;5;124m by default [39m[38;5;124m"[39m
+[0;32m    306[0m         [38;5;124m"[39m[38;5;124mas it is likely to crash IPython. If you know what you are doing, [39m[38;5;124m"[39m
+[0;32m    307[0m         [38;5;124m"[39m[38;5;124myou can use builtins[39m[38;5;124m'[39m[38;5;124m open.[39m[38;5;124m"[39m
+[0;32m    308[0m     )
+[1;32m--> 310[0m [38;5;28;01mreturn[39;00m [43mio_open[49m[43m([49m[43mfile[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+[1;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'SampleData1\\Fold_0\\range_list'
+
